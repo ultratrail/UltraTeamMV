@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>QRCodeGenerator</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card *ngIf="createdString">
+    <ngx-qrcode [qrc-value]="createdString" qrc-errorCorrectionLevel = "L"></ngx-qrcode>
+    <ion-card-content>
+      <p>Key : {{ readableKey }}</p>
+      <p>IV : {{ readableIV }} </p>
+      <p>CreatedString: {{ toSend }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <button *ngIf="createdString" ion-button block round (click)="openMapPage()">
+    <ion-icon name="checkmark"></ion-icon>
+    Everybody joined
+  </button>
+
+  <button ion-button full (click)="generateCode()">
+    <ion-icon name="barcode"></ion-icon>
+    Generate Code
+  </button>
+
+</ion-content>
