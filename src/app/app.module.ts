@@ -1,7 +1,7 @@
 import { MyApp } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, PopoverController } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -10,7 +10,6 @@ import { Device } from '@ionic-native/device';
 
 import { MapPage } from '../pages/map/map';
 import { Geolocation } from '@ionic-native/geolocation';
-import { PopoverPage } from '../pages/popover/popover'
 import { BLE } from '@ionic-native/ble';
 import { SettingsPage } from '../pages/settings/settings';
 import { QrCodeGeneratorPage } from "../pages/qr-code-generator/qr-code-generator";
@@ -23,7 +22,6 @@ import { HomePage } from '../pages/home/home';
     HomePage,
     MapPage,
     SettingsPage,
-    PopoverPage,
     QrCodeGeneratorPage,
     QrCodeReaderPage,
   ],
@@ -37,7 +35,6 @@ import { HomePage } from '../pages/home/home';
     MyApp,
     HomePage,
     MapPage,
-    PopoverPage,
     SettingsPage,
     QrCodeGeneratorPage,
     QrCodeReaderPage,
@@ -46,7 +43,6 @@ import { HomePage } from '../pages/home/home';
     Geolocation,
     StatusBar,
     SplashScreen,
-    PopoverController,
     BLE,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     BarcodeScanner,

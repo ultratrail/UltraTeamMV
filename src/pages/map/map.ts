@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, PopoverController } from 'ionic-angular';
+import { NavController, PopoverController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { BLE } from '@ionic-native/ble';
-import { PopoverPage } from '../popover/popover';
+import { DataStruct } from '../../util/dataStruct';
 
 declare var google;
 
@@ -21,7 +21,8 @@ export class MapPage {
     public navCtrl: NavController,
     public geolocation: Geolocation,
     public popoverCtrl: PopoverController,
-    public ble:BLE
+    public ble:BLE,
+    public alerCtrl: AlertController
     ) {
 
   }
@@ -77,14 +78,35 @@ export class MapPage {
 
   }
 
-  //Show popover menu
-  displayUsersList(event) {
-    this.popover = this.popoverCtrl.create(PopoverPage, {});
-    this.popover.present({
-      ev: event
+
+
+
+
+  testRadioOpen: boolean;
+  testRadioResult;
+
+  doRadio() {
+    let alert = this.alerCtrl.create();
+    alert.setTitle('Choose whom to locate');
+
+    for (let entry of DataStruct.fakeUsersList) {
+        alert.addInput(DataStruct.userToRadioAlertInput(entry));
+    }
+
+    alert.addButton('Cancel');
+
+    alert.addButton({
+      text: 'Locate',
+      handler: data => {
+        console.log('Goto:', data);
+        this.testRadioOpen = false;
+        this.testRadioResult = data;
+      }
+    });
+
+    alert.present().then(() => {
+      this.testRadioOpen = true;
     });
   }
-
-
 
 }
