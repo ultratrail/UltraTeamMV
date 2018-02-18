@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Course } from "../../model/Course";
 import { MapPage } from '../map/map';
 import { AES } from "../../util/aes";
 import { Char } from "../../util/char";
@@ -11,15 +10,22 @@ import { Char } from "../../util/char";
 })
 export class QrCodeGeneratorPage {
 
-  qrData = null;
-  createdString: string = null;
-  calculatedString = null;
-  creator: Course;
+  /**
+   * The generated AES.
+   */
   aes: AES;
-  toSend: string;
-
-  readableKey: string = null;
-  readableIV: string = null;
+  /**
+   * The string generated from AES, to be sent.
+   */
+  createdString: string = null;
+  /**
+   * AES IV as a "pseudo human readable" string
+   */
+  private readableKey: string = null;
+  /**
+   * AES IV as a "pseudo human readable" string
+   */
+  private readableIV: string = null;
 
   constructor(public navCtrl: NavController) {
     this.aes = new AES();
@@ -28,18 +34,30 @@ export class QrCodeGeneratorPage {
     this.generateCode();
   }
 
+  /**
+   * Return encoded AES Key & IV from `number[]` to string
+   *
+   * @param      {<type>}  key     The AES key to encode
+   * @param      {<type>}  iv      The AES IV to encode
+   * @return     {<type>}  { The encoded string }
+   */
   private encode(key: number[], iv: number[]):string {
     let keyAsChar = Char.numberArrayToCharCode(key, "");
     let ivAsChar = Char.numberArrayToCharCode(iv, "");
     return new Array(keyAsChar, ivAsChar).join("¤");
   }
 
-  generateCode() {
-    this.toSend = this.encode(this.aes.getKey(), this.aes.getIV());
-    this.createdString = this.toSend;
+  /**
+   * Encodes the AES Key & IV into `createdString`
+   */
+  private generateCode(): void {
+    this.createdString = this.encode(this.aes.getKey(), this.aes.getIV());
   }
 
-  openMapPage() {
+  /**
+   * Opens map page.
+   */
+  private openMapPage(): void {
     this.navCtrl.setRoot(MapPage);
   }
 

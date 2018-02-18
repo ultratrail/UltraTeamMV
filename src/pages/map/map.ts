@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, PopoverController, AlertController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { BLE } from '@ionic-native/ble';
+// TODO : import from model
 import { DataStruct } from '../../util/dataStruct';
 
 declare var google;
@@ -13,16 +13,25 @@ declare var google;
 export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;
-  map: any;
 
-  popover:any;
+  /**
+   * The map itself
+   */
+  private map: any;
+
+  /**
+   * Whether or not the RadioList is currently displayed  
+   */
+  private testRadioOpen: boolean;
+  /**
+   * The result of the last RadioListSelection
+   */
+  private testRadioResult;
 
   constructor(
-    public navCtrl: NavController,
-    public geolocation: Geolocation,
-    public popoverCtrl: PopoverController,
-    public ble:BLE,
-    public alerCtrl: AlertController
+    private navCtrl: NavController,
+    private geolocation: Geolocation,
+    private alerCtrl: AlertController
     ) {
 
   }
@@ -31,6 +40,10 @@ export class MapPage {
     this.loadMap();
   }
 
+  /**
+   * Displays a marker on the center of the map.
+   * To be removed (useless on real app).
+   */
   addMarker() {
 
     let marker = new google.maps.Marker({
@@ -45,7 +58,14 @@ export class MapPage {
 
   }
 
-  addInfoWindow(marker, content) {
+  /**
+   * Displays `content` parameter in an info window over `marker` marker parameter.
+   * To be adapted to leaflet.
+   *
+   * @param      {<type>}  marker   The marker to display info window on 
+   * @param      {<type>}  content  The content to diplay in info window
+   */
+  addInfoWindow(marker, content): void {
 
     let infoWindow = new google.maps.InfoWindow({
       content: content
@@ -57,7 +77,11 @@ export class MapPage {
 
   }
 
-  loadMap() {
+  /**
+   * Loads the map.
+   * To be adapted to leaflet.
+   */
+  loadMap():void {
 
     this.geolocation.getCurrentPosition().then((position) => {
 
@@ -78,14 +102,10 @@ export class MapPage {
 
   }
 
-
-
-
-
-  testRadioOpen: boolean;
-  testRadioResult;
-
-  doRadio() {
+  /**
+   * Pops an alert radio list to select which user to focus on.
+   */
+  displayUserListRadio(): void {
     let alert = this.alerCtrl.create();
     alert.setTitle('Choose whom to locate');
 

@@ -16,11 +16,17 @@ export class HomePage {
     console.log('ionViewDidLoad HomePage');
   }
 
-  openCreatePage(){
+  /**
+   * Opens the QRCodeGenerator page.
+   */
+  openCreatePage(): void{
     this.navCtrl.setRoot(QrCodeGeneratorPage);
   }
 
-  openJoinPage() {
+  /**
+   * Opens the QRCode scanner page.
+   */
+  openJoinPage(): void {
     this.navCtrl.setRoot(QrCodeReaderPage);
   }
 

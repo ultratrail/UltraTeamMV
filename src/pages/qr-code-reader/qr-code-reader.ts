@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AES } from "../../util/aes";
 import { Char } from "../../util/char";
-import { QrCodeGeneratorPage } from '../qr-code-generator/qr-code-generator';
 import { ToastController } from 'ionic-angular';
 
 @Component({
@@ -11,15 +10,22 @@ import { ToastController } from 'ionic-angular';
 })
 export class QrCodeReaderPage {
 
-  qrData = null;
-  createdCode = null;
-  scannedCode = null;
-  decryptedCode: string = null;
-  aes: AES;
-  qrGen: QrCodeGeneratorPage;
-
-  readableKey: string = null;
-  readableIV: string = null;
+  /**
+   * String resulting of scan
+   */
+  private scannedCode: string = null;
+  /**
+   * AES to be generated from scan
+   */
+  private aes: AES;
+  /**
+   * AES IV as a "pseudo human readable" string
+   */
+  private readableKey: string = null;
+  /**
+   * AES IV as a "pseudo human readable" string
+   */
+  private readableIV: string = null;
 
   constructor(
     private barcodeScanner: BarcodeScanner,
@@ -32,7 +38,10 @@ export class QrCodeReaderPage {
     this.scanCode();
   }
 
-  scanCode() {
+  /**
+   * Scans a code. Stores its text in `scannedCode` and runs `decode` on it.
+   */
+  scanCode(): void {
     this.barcodeScanner.scan().then(barcodeData => {
       if(barcodeData.text){ // To avoid exception on no code scanned
         this.decode(barcodeData.text)
@@ -51,6 +60,13 @@ export class QrCodeReaderPage {
     });
   }
 
+  /**
+   * Decodes an encoded AES key & IV. 
+   * Creates the corresponding AES into `aes`.
+   *
+   * @param      {<type>}  str     The scanned string to be decoded
+   * @return     {<type>} 
+   */
   private decode(str: string):void {
     let arr:string[] = str.split("¤");
     let key = Char.charCodeToNumberArray(arr[0]);
@@ -61,7 +77,5 @@ export class QrCodeReaderPage {
 
     this.aes = new AES(key, IV);
   }
-
-
 
 }
