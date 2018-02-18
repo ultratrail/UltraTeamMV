@@ -3,6 +3,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AES } from "../../util/aes";
 import { Char } from "../../util/char";
 import { QrCodeGeneratorPage } from '../qr-code-generator/qr-code-generator';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-qr-code-reader',
@@ -21,8 +22,9 @@ export class QrCodeReaderPage {
   readableIV: string = null;
 
   constructor(
-    private barcodeScanner: BarcodeScanner
-  ) {
+    private barcodeScanner: BarcodeScanner,
+    private toastCtrl: ToastController
+    ) {
 
   }
 
@@ -32,8 +34,18 @@ export class QrCodeReaderPage {
 
   scanCode() {
     this.barcodeScanner.scan().then(barcodeData => {
-      this.decode(barcodeData.text)
-      this.scannedCode = barcodeData.text;
+      if(barcodeData.text){ // To avoid exception on no code scanned
+        this.decode(barcodeData.text)
+        this.scannedCode = barcodeData.text;
+      }
+      else{ // If nothing was scanned, display a toast menu to inform user
+        let toast = this.toastCtrl.create({
+          position: 'top',
+          message: 'Could not scan, no course joined',
+          duration: 5000
+        });
+        toast.present();
+      }
     }, (err) => {
       console.log('Error: ', err);
     });
