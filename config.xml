@@ -86,4 +86,5 @@
     <plugin name="cordova-plugin-ble-central" spec="^1.1.4" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-sqlite-storage" spec="^2.2.0" />
+    <plugin name="phonegap-nfc" spec="^0.7.1" />
 </widget>
