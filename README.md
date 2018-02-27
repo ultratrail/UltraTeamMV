@@ -11,8 +11,8 @@ It is developed in synergy with another [UltraTeam 2018 project](http://air.imag
 
 A more detailled description is available on the [AIR page](https://air.imag.fr/index.php/RICM4_2017_2018_-_UltraTeamMV) of the project.
 
-# Installation # 
-## User ## 
+# Installation
+## User
 ### Android
 
 - Download ```.apk``` file.  
