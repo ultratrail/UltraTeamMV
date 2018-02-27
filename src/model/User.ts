@@ -7,15 +7,44 @@ export class User {
   private device: Device;
 
   constructor(
-    private Name: string,
-    private Geolocation: google.maps.LatLng,
-    private Smartphone: boolean,
-    private ESP: boolean,
-    private SOS: boolean,
-  ) {
+    private name: string, 
+    private location : [number, number], 
+    private smartphoneON: boolean, 
+    private espON : boolean, 
+    private sos: boolean) {
     this.device = new Device();
     this.UID = this.device.uuid;
   }
+  
+  /**
+  * Gets the user's name.
+  *
+  * @return     {<type>}  The user's name.
+  */
+  getName(){
+    return this.name ;
+  }
 
+  /**
+  * Gets the user's location.
+  *
+  * @return     {<type>}  The user's location.
+  */
+  getLocation(){
+    return this.location ;
+  }
+
+  /**
+  * Creates a `RadioAlertInput` from a current `User`.
+  *
+  * @return     {<type>}  { The created RadioAlertInput }
+  */
+  userToRadioAlertInput(): object{
+    return {
+      type: 'radio',
+      label: this.getName(),
+      value: this.getLocation(),
+    }
+  }
 
 }
