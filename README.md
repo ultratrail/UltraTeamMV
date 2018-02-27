@@ -45,7 +45,9 @@ git clone https://gricad-gitlab.univ-grenoble-alpes.fr/Projet-RICM4/17-18/7.2/Ul
 cd UltraTeamMVApp  
 ```  
 Install required npm packages :  
-```sudo npm install```  
+```
+sudo npm install
+```  
 
 ### Develop ESP32 software
 Todo
