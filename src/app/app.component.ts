@@ -13,9 +13,10 @@ import { QrCodeReaderPage } from "../pages/qr-code-reader/qr-code-reader";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
   rootPage: any = HomePage;
   pages: Array<{ title: string, component: any }>;
+
+  SOS: boolean ;
 
   constructor(
     public platform: Platform,
@@ -46,5 +47,10 @@ export class MyApp {
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
+
+  sosToogled(){
+    // Handle SOS
+  }
+
 }
 
