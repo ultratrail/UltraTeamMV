@@ -43,7 +43,7 @@ export class User {
     return {
       type: 'radio',
       label: this.getName(),
-      value: this.getLocation(),
+      value: this,
     }
   }
 

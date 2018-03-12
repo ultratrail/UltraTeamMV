@@ -3,6 +3,8 @@ import { NavController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { User } from '../../model/User';
 
+import L from "leaflet";
+
 declare var google;
 
 @Component({
@@ -16,28 +18,77 @@ export class MapPage {
   /**
    * The map itself
    */
-   private map: any;
+   // private map: any;
 
   /**
    * Whether or not the RadioList is currently displayed  
    */
    private testRadioOpen: boolean;
   /**
-   * The result of the last RadioListSelection
-   */
-   private testRadioResult;
+  * The result of the last RadioListSelection
+  */
+  private testRadioResult;
 
-   constructor(
-     private navCtrl: NavController,
-     private geolocation: Geolocation,
-     private alerCtrl: AlertController
-     ) {
+  private map: L.Map;
+  center: L.PointTuple;
 
-   }
+  private currentPosition:Array<Number> = new Array<Number>(2);
+  private currentMarker;
+  private currentUser:User;
 
-   ionViewDidLoad() {
-     this.loadMap();
-   }
+  constructor(
+    private navCtrl: NavController,
+    private geolocation: Geolocation,
+    private alerCtrl: AlertController
+    ) {
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad MapPage');
+
+    //set map center
+    //this.center = [48.137154, 11.576124]; //Munich
+    this.center = [48.775556, 9.182778]; //Stuttgart
+    
+    //setup leaflet map
+    this.initMap();
+  }
+
+  initMap() {
+    this.map = L.map('map', {
+      center: this.center,
+      zoom: 13
+    });
+
+    //Add OSM Layer
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      maxZoom: 17,
+      attributionControl: false
+    }).addTo(this.map);
+
+    this.map.removeControl(this.map.attributionControl);
+    this.map.locate({setView: true, maxZoom: 17});
+
+    this.map.on('locationerror', this.onLocationError);
+    this.map.on('locationfound', this.onLocationFound);
+
+  }
+
+  onLocationFound(e) {
+
+    var radius = e.accuracy / 2;
+
+    // L.marker(e.latlng).addTo(this.map)
+    //     .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+    // L.circle(e.latlng, radius).addTo(this.map);
+  }
+
+  onLocationError(e) {
+      alert(e.message);
+  }
+
 
   /**
    * Displays a marker on the center of the map.
@@ -118,6 +169,12 @@ export class MapPage {
       text: 'Locate',
       handler: data => {
         console.log('Goto:', data);
+        this.currentUser = data;
+        this.currentPosition = this.currentUser.getLocation();
+        this.currentMarker = L.marker(this.currentPosition).addTo(this.map);
+        var name = this.currentUser.getName();
+        this.currentMarker.bindPopup(name).openPopup();
+        this.center = this.map.panTo(new L.LatLng(this.currentPosition[0], this.currentPosition[1]), {animate: true});
         this.testRadioOpen = false;
         this.testRadioResult = data;
       }
@@ -131,8 +188,8 @@ export class MapPage {
 
 
   fakeUsersList: User[] = [
-  new User('Alice', [0, 0],true, true, true),
-  new User('Bob', [1, 1], undefined, undefined, undefined),
+  new User('Alice', [48.137154, 11.576124],true, true, true),
+  new User('Bob', [48.775556, 9.182778], undefined, undefined, undefined),
   new User('Charlie', [-1, -1], undefined, undefined, undefined)
   ]
 
