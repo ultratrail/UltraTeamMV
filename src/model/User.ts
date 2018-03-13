@@ -30,7 +30,7 @@ export class User {
   *
   * @return     {<type>}  The user's location.
   */
-  getLocation(){
+  getLocation():Array<Number>{
     return this.location ;
   }
 
