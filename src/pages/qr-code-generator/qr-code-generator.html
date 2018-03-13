@@ -17,18 +17,13 @@
     <ion-card-content>
       <p>Key : {{ readableKey }}</p>
       <p>IV : {{ readableIV }} </p>
-      <p>CreatedString: {{ toSend }}</p>
+      <p>CreatedString: {{ createdString }}</p>
     </ion-card-content>
   </ion-card>
 
   <button *ngIf="createdString" ion-button block round (click)="openMapPage()">
     <ion-icon name="checkmark"></ion-icon>
     Everybody joined
-  </button>
-
-  <button ion-button full (click)="generateCode()">
-    <ion-icon name="barcode"></ion-icon>
-    Generate Code
   </button>
 
 </ion-content>
