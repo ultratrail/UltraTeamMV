@@ -50,6 +50,16 @@ export class MyApp {
 
   sosToogled(){
     // Handle SOS
+    this.sendSOSServer();
+    this.sendSOSBLE();
+  }
+
+  sendSOSServer(){
+    console.log("Sending SOS to server");
+  }
+
+  sendSOSBLE(){
+    console.log("Sending SOS to BLE");
   }
 
 }
