@@ -29,10 +29,17 @@ export class MapPage {
   */
   private testRadioResult;
 
+  /**
+   * Leaflet map
+   */
   private map: L.Map;
+
+  /**
+   * Leaflet map center 
+   */
   center: L.PointTuple;
 
-  private currentPosition:Array<Number> = new Array<Number>(2);
+  private currentPosition:Array<Number> = new Array<Number>(2);  
   private currentMarker;
   private currentUser:User;
 
@@ -154,6 +161,7 @@ export class MapPage {
 
   /**
   * Pops an alert radio list to select which user to focus on.
+  * On click on user, it will center map on said user. 
   */
   displayUserListRadio(): void {
     let alert = this.alerCtrl.create();
@@ -168,11 +176,10 @@ export class MapPage {
     alert.addButton({
       text: 'Locate',
       handler: data => {
-        console.log('Goto:', data);
         this.currentUser = data;
         this.currentPosition = this.currentUser.getLocation();
         this.currentMarker = L.marker(this.currentPosition).addTo(this.map);
-        var name = this.currentUser.getName();
+        var name = "<center><b>" + this.currentUser.getName() + "</b></center><br>[" + this.currentPosition[0].toString() + ", " + this.currentPosition[1].toString() + "]";
         this.currentMarker.bindPopup(name).openPopup();
         this.center = this.map.panTo(new L.LatLng(this.currentPosition[0], this.currentPosition[1]), {animate: true});
         this.testRadioOpen = false;
@@ -185,7 +192,13 @@ export class MapPage {
     });
   }
 
-
+  // centerOnUser(user:User):void {
+  //   this.currentPosition = this.currentUser.getLocation();
+  //   this.currentMarker = L.marker(this.currentPosition).addTo(this.map);
+  //   var name = "<center><b>" + this.currentUser.getName() + "</b></center><br>[" + this.currentPosition[0].toString() + ", " + this.currentPosition[1].toString() + "]";
+  //   this.currentMarker.bindPopup(name).openPopup();
+  //   this.center = this.map.panTo(new L.LatLng(this.currentPosition[0], this.currentPosition[1]), {animate: true});
+  // }
 
   fakeUsersList: User[] = [
   new User('Alice', [48.137154, 11.576124],true, true, true),
