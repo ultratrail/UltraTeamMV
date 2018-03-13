@@ -37,7 +37,10 @@ export class MapPage {
     this.initMap();
   }
 
-  initMap() {
+  /**
+   * Initialise map : create it, configure it and center it on received location
+   */
+  initMap():void {
     this.map = L.map('map', {
       center: this.center,
       zoom: 13
