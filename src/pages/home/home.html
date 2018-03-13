@@ -1,25 +1,44 @@
-    <ion-navbar *navbar>
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      BLE Connect
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="scan()">
+        Scan
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
-    	<ion-title>
-    		Devices
-    	</ion-title>
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button block round (click)="openCreatePage()">
+          Create Course
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button block round (click)="openJoinPage()">
+          Join Course
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list> 
+    <button ion-item *ngFor="let device of devices" (click)="deviceSelected(device)">
+      <h2>{{ device.name || 'Unnamed' }}</h2>
+      <p>{{ device.id }}</p>
+      <p>RSSI: {{ device.rssi }}</p>
+    </button>  
+  </ion-list> 
+</ion-content>
 
-    	<ion-buttons end>
-    		<button (click) = “startScanning()” >Scan</button>
-    	</ion-buttons>
-
-    </ion-navbar>
-
-    <ion-content>
-    	<ion-list inset>
-    		<ion-item-sliding *ngFor=”#device of devices” #slidingItem>
-    			<button ion-item (click)=”connectToDevice(device)”>
-    				<h2>{{device.name}}</h2>
-    				<p>{{device.id}}</p>
-    				<p>{{device.rssi}}</p>
-    			</button>
-
-    		</ion-item-sliding>
-    	</ion-list>
-    	<ion-spinner *ngIf=”isScanning==true” name=”circles”></ion-spinner>
-    </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <p>{{ statusMessage }}</p>
+  </ion-toolbar>
+</ion-footer>

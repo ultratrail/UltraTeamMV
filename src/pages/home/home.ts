@@ -1,46 +1,104 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {DevicePage} from '../device/device';
-import {BLE} from 'ionic-native';
-
+import { Component, NgZone } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { QrCodeGeneratorPage } from "../qr-code-generator/qr-code-generator";
+import { QrCodeReaderPage } from "../qr-code-reader/qr-code-reader";
+import { ToastController } from 'ionic-angular';
+import { DetailPage } from '../detail/detail';
+import { BLE } from '@ionic-native/ble';
 
 @Component({
-	templateUrl: 'build/pages/home/home.html'
+  selector: 'page-home',
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
-isScanning : boolean;
-devices;
+  devices: any[] = [];
+  statusMessage: string;
 
-	constructor(public nav: NavController) {
-		this.devices = [];
-		this.isScanning = false;
-	}
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private toastCtrl: ToastController,
+    private ble: BLE,
+    private ngZone: NgZone) { 
+  }
 
-	startScanning() {
-		console.log("Scanning Started");
-		this.devices = [];
-		this.isScanning = true;
-		BLE.startScan([]).subscribe(device => {
-			this.devices.push(device);
-		});
+ 
 
-		setTimeout(() => {
-			BLE.stopScan().then(() => {
-				console.log('Scanning has stopped');
-				console.log(JSON.stringify(this.devices))
-				this.isScanning = false;
-			});
-		}, 3000);
+  /**
+   * Opens the QRCodeGenerator page.
+   */
+   openCreatePage(): void{
+     this.navCtrl.setRoot(QrCodeGeneratorPage);
+   }
 
-	}
+  /**
+   * Opens the QRCode scanner page.
+   */
+   openJoinPage(): void {
+     this.navCtrl.setRoot(QrCodeReaderPage);
+   }
 
-	connectToDevice(device) {
-		console.log('Connect To Device');
-		console.log(JSON.stringify(device))
-		this.nav.push(DevicePage, {
-			device: device
-		});
-	}
 
-}
+   ionViewDidEnter() {
+    console.log('ionViewDidEnter');
+    this.scan();
+  }
+
+  /**
+   * Scans for BLE devices
+   */
+  scan() {
+    this.setStatus('Scanning for Bluetooth LE Devices');
+    this.devices = [];  // clear list
+
+    this.ble.scan([], 5).subscribe(
+      device => this.onDeviceDiscovered(device), 
+      error => this.scanError(error)
+    );
+
+    setTimeout(this.setStatus.bind(this), 5000, 'Scan complete');
+  }
+
+
+  /**
+   * Adds a device to the devices array when it is discovered
+   * @param device  The device
+   */
+  onDeviceDiscovered(device) {
+    console.log('Discovered ' + JSON.stringify(device, null, 2));
+    this.ngZone.run(() => {
+      this.devices.push(device);
+    });
+  }
+
+  // If location permission is denied, you'll end up here
+  scanError(error) {
+    this.setStatus('Error ' + error);
+    let toast = this.toastCtrl.create({
+      message: 'Error scanning for Bluetooth low energy devices',
+      position: 'middle',
+      duration: 5000
+    });
+    toast.present();
+  }
+
+  setStatus(message) {
+    console.log(message);
+    this.ngZone.run(() => {
+      this.statusMessage = message;
+    });
+  }
+
+  /**
+   * select the device
+   * @param device  The device
+   */
+  deviceSelected(device) {
+    console.log(JSON.stringify(device) + ' selected');
+    this.navCtrl.push(DetailPage, {
+      device: device
+    });
+  }
+
+ }
+
