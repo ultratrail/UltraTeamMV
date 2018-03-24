@@ -98,7 +98,7 @@ export class MapPage {
     let currentMarker ; 
     let name: String;
     
-    currentPosition = user.getLocation();
+    currentPosition = user.getLatestCoord();
     currentMarker = L.marker(currentPosition).addTo(this.map);
     name = this.buildMarkerString(user);
     currentMarker.bindPopup(name).openPopup();
@@ -113,14 +113,18 @@ export class MapPage {
    * @return     {<type>}  The marker string created.
    */
   buildMarkerString(user:User):String{
-    return "<center><b>" + user.getName() + "</b></center><br>[" + user.getLocation()[0].toString() + ", " + user.getLocation()[1].toString() + "]";
+    let date = user.getLatestLocation().getDate();
+    return "<center><b>" + user.getName() + "</b><br>[" 
+    + user.getLatestCoord()[0].toString() + ", " + user.getLatestCoord()[1].toString() + "]<br>" 
+    + date.getHours().toString() + "h" + date.getMinutes().toString() + "<br>"
+    + date.getDate().toString() + "/" + date.getMonth().toString() + "/" + date.getFullYear().toString() + "</center>";
   }
 
 
   fakeUsersList: User[] = [
-  new User('Alice', [48.137154, 11.576124],true, true, true),
-  new User('Bob', [48.775556, 9.182778], undefined, undefined, undefined),
-  new User('Charlie', [-1, -1], undefined, undefined, undefined)
+  new User('Alice', 48.137154, 11.576124, new Date('May 9, 1996'), true, true),
+  new User('Bob', 48.775556, 9.182778, new Date('April 14, 1996'), undefined, undefined),
+  new User('Charlie', 45.4607541, 4.3901056, new Date(), undefined, undefined)
   ]
 
 }
