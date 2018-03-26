@@ -5,7 +5,6 @@ import { LocationList } from './LocationList'
 export class User {
 
   private UID: string;
-  private device: Device;
   private locations: LocationList;
 
   constructor(
@@ -15,8 +14,7 @@ export class User {
     date : Date, 
     private espON : boolean, 
     private sos: boolean) {
-    this.device = new Device();
-    this.UID = this.device.uuid;
+    this.UID = new Device().uuid;
     this.locations = new LocationList(new Location(lat, lon, date));
   }
   
