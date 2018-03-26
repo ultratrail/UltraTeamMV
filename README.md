@@ -2,7 +2,7 @@
 
 # Project description #
 
-UltraTeamMV is a project developped by Enzo MOLION & Léo VALLETTE during [Polytech Grenoble](https://www.polytech-grenoble.fr/)'s [RICM4](https://www.polytech-grenoble.fr/menu-principal/formations/reseaux-informatiques-et-communication-multimedia/) courses.
+UltraTeamMV is a project developped by Enzo MOLION & Léo VALETTE during [Polytech Grenoble](https://www.polytech-grenoble.fr/)'s [RICM4](https://www.polytech-grenoble.fr/menu-principal/formations/reseaux-informatiques-et-communication-multimedia/) courses.
 
 This project (2017-18 version of [UltraTeam](https://air.imag.fr/index.php/UltraTeam)) consists of :
 
