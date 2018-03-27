@@ -4,20 +4,24 @@ import { LocationList } from './LocationList'
 
 export class User {
 
-  private UID: string;
   private locations: LocationList;
 
   constructor(
+    private UID: number,
     private name: string, 
     lat: number,
     lon: number,
     date : Date, 
     private espON : boolean, 
     private sos: boolean) {
-    this.UID = new Device().uuid;
+    // this.UID = new Device().uuid;
     this.locations = new LocationList(new Location(lat, lon, date));
   }
   
+  public getUID():number{
+    return this.UID;
+  }
+
   /**
   * Gets the user's name.
   *

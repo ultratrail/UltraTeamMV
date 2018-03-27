@@ -2,17 +2,19 @@ import { User } from "./User";
 
 export class Course {
 
-  nbUsers: number = 0;
+
   users: User[];
-  creator: User;
   creationDate: Date;
 
   constructor(
-    creator: User
+    private UID: number,
   ) {
     this.creationDate = new Date();
     this.users = new Array<User>();
-    this.creator = creator ;
+  }
+
+  public getUID():number{
+    return this.UID;
   }
 
   public getUsersList(): Array<User> {

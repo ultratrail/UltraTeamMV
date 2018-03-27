@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { API } from "../../api/API";
+
 import { HomePage } from "../../pages/home/home";
 import { SharedAppStateProvider } from '../../providers/shared-app-state/shared-app-state'
 import { User } from '../../model/User'
@@ -18,6 +20,11 @@ export class LoginPage {
    * Received username
    */
   private username:string;
+
+  /**
+   * Received password
+   */
+  private password:string;
 
   //TODO remove this values 
   private lat: number;
@@ -42,8 +49,15 @@ export class LoginPage {
    * Logs the user (creates the user in appstate and goes to homepage)
    */
   private login():void{
-    console.log("new User(" + this.username.toString() + ", " + this.lat + ", " + this.lon + ", date, false, true");
-    this.appState.setUser(new User(this.username, this.lat, this.lon, new Date(), false, true));
+
+    console.log("Username : " + this.username.toString() + ", Password : " + this.password.toString());
+    console.log("new User(" + this.username.toString() + ", " + this.lat + ", " + this.lon + ", date, false, true);");
+
+    let UID:number = API.authenticate(this.username, this.password);
+    // TODO : create user properly
+    let currentUser:User = new User(UID, this.username, this.lat, this.lon, new Date(), false, true); 
+
+    this.appState.setUser(currentUser);
     this.openHomePage();
   }
 

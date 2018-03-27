@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { User } from '../../model/User'
-
+import { Course } from '../../model/Course'
 
 @Injectable()
 export class SharedAppStateProvider {
@@ -10,7 +10,8 @@ export class SharedAppStateProvider {
   }
 
   private SOS: boolean ;
-  private appUser: User;
+  private appUser: User ;
+  private course: Course ;
 
   /**
    * SOS was triggered, deal with it.
@@ -57,6 +58,23 @@ export class SharedAppStateProvider {
    */
   public setUser(user: User):void{
     this.appUser = user;
+  }
+
+  /**
+   * Retrives the application user.
+   *
+   * @return     {<type>}  The user.
+   */
+  public getUser():User{
+    return this.appUser;
+  }
+
+  public setCourse(course:Course){
+    this.course = course;
+  }
+
+  public getCourse():Course{
+    return this.course;
   }
 
 }
