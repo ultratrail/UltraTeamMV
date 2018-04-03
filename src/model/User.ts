@@ -18,6 +18,11 @@ export class User {
     this.locations = new LocationList(new Location(lat, lon, date));
   }
   
+  /**
+   * Gets the user's UID.
+   *
+   * @return     {<type>}  User's UID.
+   */
   public getUID():number{
     return this.UID;
   }
@@ -25,7 +30,7 @@ export class User {
   /**
   * Gets the user's name.
   *
-  * @return     {<type>}  The user's name.
+  * @return     {<type>}  User's name.
   */
   public getName(){
     return this.name ;
@@ -34,7 +39,7 @@ export class User {
   /**
   * Gets the user's location.
   *
-  * @return     {<type>}  The user's location.
+  * @return     {<type>}  User's location.
   */
   public getLatestLocation():Location{
     return this.locations.getLatestLocation() ;

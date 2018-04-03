@@ -9,8 +9,19 @@ export class SharedAppStateProvider {
   constructor() {
   }
 
+  /**
+   * SOS boolean state
+   */
   private SOS: boolean ;
+  
+  /**
+   * The user of the application
+   */
   private appUser: User ;
+
+  /**
+   * The course currently taking place in the application
+   */
   private course: Course ;
 
   /**
@@ -69,10 +80,20 @@ export class SharedAppStateProvider {
     return this.appUser;
   }
 
-  public setCourse(course:Course){
+  /**
+   * Sets the current course.
+   *
+   * @param      {<type>}  course  The course to be set as current course
+   */
+  public setCourse(course:Course):void{
     this.course = course;
   }
 
+  /**
+   * Gets the current course.
+   *
+   * @return     {<type>}  The current course.
+   */
   public getCourse():Course{
     return this.course;
   }

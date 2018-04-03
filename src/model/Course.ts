@@ -2,8 +2,14 @@ import { User } from "./User";
 
 export class Course {
 
-
+  /**
+   * List of course's users
+   */
   users: User[];
+
+  /**
+   * Creation date of list
+   */
   creationDate: Date;
 
   constructor(
@@ -13,15 +19,30 @@ export class Course {
     this.users = new Array<User>();
   }
 
+  /**
+   * Returns course's UID
+   *
+   * @return     {<type>}  Course's UID
+   */
   public getUID():number{
     return this.UID;
   }
 
+  /**
+   * Returns course's user list
+   *
+   * @return     {<type>}  The users list.
+   */
   public getUsersList(): Array<User> {
     return this.users;
   }
 
-  public addUser(user: User) {
+  /**
+   * Adds an user to the course.
+   *
+   * @param      {<type>}  user    The User to be added to the course
+   */
+  public addUser(user: User):void{
     this.users.push(user);
   }
 

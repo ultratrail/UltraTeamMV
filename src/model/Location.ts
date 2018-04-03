@@ -1,6 +1,12 @@
 export class Location {
 
+    /**
+     * Coordinates of the location
+     */
     private coord : [number, number];
+    /**
+     * Exact date of the location
+     */
     private date : Date;
     
     /**

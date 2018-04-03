@@ -122,9 +122,9 @@ export class MapPage {
 
 
   fakeUsersList: User[] = [
-  new User('Alice', 48.137154, 11.576124, new Date('May 9, 1996'), true, true),
-  new User('Bob', 48.775556, 9.182778, new Date('April 14, 1996'), undefined, undefined),
-  new User('Charlie', 45.4607541, 4.3901056, new Date(), undefined, undefined)
+  new User(0, 'Alice', 48.137154, 11.576124, new Date('May 9, 1996'), true, true),
+  new User(1, 'Bob', 48.775556, 9.182778, new Date('April 14, 1996'), undefined, undefined),
+  new User(2, 'Charlie', 45.4607541, 4.3901056, new Date(), undefined, undefined)
   ]
 
 }
