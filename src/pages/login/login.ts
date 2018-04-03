@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { API } from "../../api/API";
 
@@ -56,10 +56,10 @@ export class LoginPage {
   private login():void{
 
     console.log("Username : " + this.username.toString() + ", Password : " + this.password.toString());
-    console.log("new User(" + this.username.toString() + ", " + this.lat + ", " + this.lon + ", date, false, true);");
 
     let UID:number = API.authenticate(this.username, this.password);
     // TODO : create user properly
+    console.log("new User(" + UID  + ", " + this.username.toString() + ", " + this.lat + ", " + this.lon + ", date, false, true);");
     let currentUser:User = new User(UID, this.username, this.lat, this.lon, new Date(), false, true); 
 
     this.appState.setUser(currentUser);
