@@ -1,3 +1,15 @@
+/**@file sketch_1.ino */
+
+/**
+ * 
+ * \file LoRaUltraTeam.ino
+ * \brief LoRa communication program
+ * \author Léo Valette
+ * \version 0.1
+ * 
+ * This program is for the LoRa communication
+ */
+
 #include <SPI.h>
 #include <LoRa.h>
 #include <Wire.h>  
@@ -110,7 +122,7 @@ void insertUser(List* list, uint8_t UID, double LatLong, bool SOSFlag){
  * @brief      Search a user via its UID in a list of user
  *
  * @param      list  the list of user where the user is searched
- * @param      UID   the user UID
+ * @param      userUID   the user UID
  *
  * @return     a pointer to the user or NULL if the user has not been found
  */
@@ -193,9 +205,9 @@ void configForLoRaWAN() {
  * @brief      Update the gelocation and / or the SOS statement of a user
  *
  * @param      list     the list of user where the user should be added
- * @param      UID      the user UID
- * @param      LatLong  the user geolocalisation
- * @param      SOSFlag  The sos flag
+ * @param      userUID      the user UID
+ * @param      userLatLong  the user geolocalisation
+ * @param      userSOSFlag  The sos flag
  */
 void updateUserInfo(List *list, uint8_t userUID, double userLatLong, bool userSOSFlag){
   User* p = malloc(sizeof(*p));
@@ -207,7 +219,7 @@ void updateUserInfo(List *list, uint8_t userUID, double userLatLong, bool userSO
 }
 
 /**
- * @brief      The 4 following functions convert the given value as an array of char
+ * @brief      The  following function convert the given value as an array of char
  *
  * @param      value  The value to convert
  *
@@ -219,6 +231,13 @@ unsigned char* uint8_tToBytes(uint8_t value){
   return tochar;
 }
 
+/**
+ * @brief      The  following function convert the given value as an array of char
+ *
+ * @param      value  The value to convert
+ *
+ * @return     The converted value as an array of char
+ */
 unsigned char* intToBytes(int value){
   unsigned char tochar[4];
   tochar[0] = value;
@@ -228,12 +247,26 @@ unsigned char* intToBytes(int value){
   return tochar;
 }
 
+/**
+ * @brief      The  following function convert the given value as an array of char
+ *
+ * @param      value  The value to convert
+ *
+ * @return     The converted value as an array of char
+ */
 unsigned char* boolToBytes(bool value){
   unsigned char tochar[1];
   tochar[0] = value;
   return tochar;
 }
 
+/**
+ * @brief      The  following function convert the given value as an array of char
+ *
+ * @param      value  The value to convert
+ *
+ * @return     The converted value as an array of char
+ */
 unsigned char* doubleToBytes(double value){
   unsigned char tochar[8];
   tochar[0] = value;
