@@ -2,6 +2,11 @@ import { Device } from '@ionic-native/device';
 import { Location } from './Location'
 import { LocationList } from './LocationList'
 
+/**
+ * User describing class.
+ *
+ * @class      User
+ */
 export class User {
 
   private locations: LocationList;

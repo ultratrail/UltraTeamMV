@@ -4,6 +4,11 @@ import { User } from '../../model/User'
 import { Course } from '../../model/Course'
 
 @Injectable()
+/**
+ * Shared application state provider. And object which is injected all over the application.
+ *
+ * @class      SharedAppStateProvider
+ */
 export class SharedAppStateProvider {
 
   constructor() {

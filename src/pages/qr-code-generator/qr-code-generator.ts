@@ -12,6 +12,11 @@ import { Char } from "../../util/char";
   selector: 'page-qr-code-generator',
   templateUrl: 'qr-code-generator.html'
 })
+/**
+ * QRCode generator page class
+ *
+ * @class      QrCodeGeneratorPage
+ */
 export class QrCodeGeneratorPage {
 
   /**

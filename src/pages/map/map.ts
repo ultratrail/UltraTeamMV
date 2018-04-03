@@ -8,6 +8,11 @@ import L from "leaflet";
   selector: 'map-page',
   templateUrl: 'map.html'
 })
+/**
+ * Map page class.
+ *
+ * @class      MapPage (name)
+ */
 export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;

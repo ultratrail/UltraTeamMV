@@ -1,5 +1,10 @@
 import { Location } from './Location'
 
+/**
+ * List of locations describing class.
+ *
+ * @class      LocationList
+ */
 export class LocationList {
     
     private latestLocation: Location;

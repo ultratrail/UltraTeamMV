@@ -1,5 +1,9 @@
 import aesjs from 'aes-js';
-
+/**
+ * AES class. Used for AES encryption.
+ *
+ * @class      AES (name)
+ */
 export class AES {
 
   /**

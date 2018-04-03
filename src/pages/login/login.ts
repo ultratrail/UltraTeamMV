@@ -14,6 +14,11 @@ import { Geolocation } from '@ionic-native/geolocation';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
+/**
+ * Login page class.
+ *
+ * @class      LoginPage
+ */
 export class LoginPage {  
 
   /**

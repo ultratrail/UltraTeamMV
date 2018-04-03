@@ -1,5 +1,10 @@
 import { User } from "./User";
 
+/**
+ * Course describing class
+ *
+ * @class      Course
+ */
 export class Course {
 
   /**

@@ -1,5 +1,10 @@
 import { Course } from "../model/Course";
 
+/**
+ * API request oriented class
+ *
+ * @class      API
+ */
 export class API {
     
     /**

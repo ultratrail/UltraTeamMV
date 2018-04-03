@@ -1,3 +1,8 @@
+/**
+ * Location describing class
+ *
+ * @class      Location
+ */
 export class Location {
 
     /**

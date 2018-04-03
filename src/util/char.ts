@@ -1,3 +1,6 @@
+/**
+ * Character manipulation module.
+ */
 export module Char {
 
   /**

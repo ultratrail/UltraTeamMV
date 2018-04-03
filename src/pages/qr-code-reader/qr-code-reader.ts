@@ -15,6 +15,11 @@ import { API } from '../../api/API'
   selector: 'page-qr-code-reader',
   templateUrl: 'qr-code-reader.html',
 })
+/**
+ * QRCode reader page class.
+ *
+ * @class      QrCodeReaderPage
+ */
 export class QrCodeReaderPage {
 
   /**
