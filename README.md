@@ -7,7 +7,7 @@ This project (2017-18 version of [UltraTeam](https://air.imag.fr/index.php/Ultra
 - A BLE & LoRa decentralized protocol conception and implementation,
 - A web application development.
 This solution should allow a hikers team to localize each other in real time.
-It is developed in synergy with another [UltraTeam 2018 project](http://air.imag.fr/index.php/RICM4_2017_2018_-_UltraTeam_7.1/).
+It is developed in synergy with another [UltraTeam 2018 project](https://air.imag.fr/index.php/RICM4_2017_2018_-_UltraTeam_7.1).
 
 A more detailled description is available on the [AIR page](https://air.imag.fr/index.php/RICM4_2017_2018_-_UltraTeamMV) of the project.
 
