@@ -22,11 +22,11 @@ export class QrCodeGeneratorPage {
   /**
    * The generated AES.
    */
-  aes: AES;
+  private aes: AES;
   /**
    * The string generated from AES, to be sent.
    */
-  createdString: string = null;
+  private createdString: string = null;
   /**
    * AES IV as a "pseudo human readable" string
    */
