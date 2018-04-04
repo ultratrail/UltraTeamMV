@@ -30,15 +30,13 @@ export class MapPage {
   constructor(
     private alerCtrl: AlertController
     ) {
-
+    
   }
 
   ionViewDidLoad() {
     //set map center
-    //this.center = [48.137154, 11.576124]; //Munich
-    this.center = [48.775556, 9.182778]; //Stuttgart
+    this.center = [45.184604, 5.752280]; //Polytech
     
-    //setup leaflet map
     this.initMap();
   }
 
