@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { App, Platform, MenuController, Nav } from 'ionic-angular';
 
 import { SharedAppStateProvider } from '../providers/shared-app-state/shared-app-state'
 
@@ -61,8 +61,14 @@ export class MyApp {
   openPage(page):void {
     // close the menu when clicking a link from the menu
     this.menu.close();
+
     // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
+    if(page.component == MapPage){
+      this.nav.popToRoot();
+    }
+    else{
+      this.nav.push(page.component);
+    }
   }
 
   /**
