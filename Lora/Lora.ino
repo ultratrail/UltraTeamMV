@@ -2,7 +2,6 @@
 #include <LoRa.h>
 #include <Wire.h>  
 #include "SSD1306.h" 
-#include "images.h"
 
 // Pin definetion of WIFI LoRa 32
 // HelTec AutoMation 2017 support@heltec.cn 
@@ -14,14 +13,6 @@
 #define DI0    26   // GPIO26 -- SX127x's IRQ(Interrupt Request)
 #define BAND 868100000
 
-
-String outgoing; // outgoing message
-byte msgCount = 0;            // count of outgoing messages
-long lastSendTime = 0;        // last send time
-int interval = 2000; // interval between sends
-byte localAddress = 0xBB;     // address of this device
-byte destination = 0xFF; // destination to send to
-
 // LoRaWAN CONFIGURATION
 #define PABOOST false
 #define TXPOWER 14
@@ -31,6 +22,31 @@ byte destination = 0xFF; // destination to send to
 #define PREAMBLE_LENGTH 8
 #define SYNC_WORD 0x34
 
+
+//String outgoing; // outgoing message
+//byte msgCount = 0;            // count of outgoing messages
+//long lastSendTime = 0;        // last send time
+int interval = 2000; // interval between sends
+//byte localAddress = 0xBB;     // address of this device
+//byte destination = 0xFF; // destination to send to
+int myUID = 1234;
+double myLatLong = 1234567890;
+
+
+typedef struct User User;
+struct User{
+    short UID;
+    double LatLong;
+    bool SOSflag;
+    long lastSendTime;
+    User *suivant;
+};
+
+typedef struct Liste Liste;
+struct Liste{
+    User *premier;
+};
+
 void configForLoRaWAN()
 {
   LoRa.setTxPower(TXPOWER);
@@ -39,35 +55,12 @@ void configForLoRaWAN()
   LoRa.setCodingRate4(CODING_RATE);
   LoRa.setPreambleLength(PREAMBLE_LENGTH);
   LoRa.setSyncWord(SYNC_WORD);
-  //LoRa.crc();
 }
-
-String loraCfg = "Cfg:";
-void  displayLoRaConfig(int x, int y){
-  loraCfg = 
-            "fr " + String(BAND/1000000, DEC)
-          + " sf" + String(SPREADING_FACTOR, DEC)
-          + " bw" + String(BANDWIDTH/1000, DEC)
-          + " cr" + String(CODING_RATE, DEC) + "/4";
-//  display.drawString(x, y, loraCfg);
-  loraCfg =        
-          + " pr" + String(PREAMBLE_LENGTH, DEC)
-          + " pw" + String(TXPOWER, DEC)
-          + " sw" + String(SYNC_WORD, HEX)
-          ;
- // display.drawString(x, y+10, loraCfg);
-}
-// END LoRaWAN CONFIGURATION
-
-
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(115200);                   // initialize serial
   while (!Serial);
-
   Serial.println("LoRa Duplex");
-
   configForLoRaWAN();
   SPI.begin(SCK,MISO,MOSI,SS);
   LoRa.setPins(SS,RST,DI0);// set CS, reset, IRQ pin
@@ -79,6 +72,7 @@ void setup() {
   }
 
   Serial.println("LoRa init succeeded.");
+  initialisation();
 }
 
 void loop() {
@@ -110,7 +104,6 @@ void sendMessage(String outgoing)
 void onReceive(int packetSize)
 { 
   if (packetSize == 0){
-     //Serial.println("Didn't receive anything");
     return;          // if there's no packet, return
   }
 
@@ -149,4 +142,51 @@ void onReceive(int packetSize)
   Serial.println("Snr: " + String(LoRa.packetSnr()));
   Serial.println();
 }
+
+Liste *initialisation(){
+    Liste *liste = malloc(sizeof(*liste));
+    User *user = malloc(sizeof(*user));
+    User->UID = myUID;
+    User->LatLong = myLatLong;
+    User->SOSflag = 0;
+    User->lastSendTime = millis();
+    User->suivant = NULL;
+    liste->premier = user;
+    return liste;
+}
+
+void insertion(Liste *liste, int UID, double LatLong, int SOSflag, char* pseudo){
+    /* Création du nouvel élément */
+    User *nouveau = malloc(sizeof(*nouveau));
+    nouveau->UID = UID;
+    nouveau->LatLong = LatLong;
+    nouveau->SOSflag = SOSflag;
+    nouveau->lastSendTime = millis();
+    /* Insertion de l'élément en fin de liste */
+    nouveau->suivant = NULL;
+    liste->premier = nouveau;
+    User *p=liste->premier;
+    while(p->suivant!=NULL){
+        p=p->suivant;
+    }
+    p->suivant = nouveau;
+}
+
+void firstSend(User *user){
+                    
+}
+
+
+
+std::vector<unsigned char> intToBytes(int value){
+    std::vector<unsigned char> result;
+    result.push_back(value >> 24);
+    result.push_back(value >> 16);
+    result.push_back(value >>  8);
+    result.push_back(value      );
+    return result;
+}
+
+
+
 
