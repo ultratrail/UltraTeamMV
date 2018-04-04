@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+
+import { SharedAppStateProvider } from '../../providers/shared-app-state/shared-app-state'
+
 import { MapPage } from '../map/map';
+
 import { AES } from "../../util/aes";
 import { Char } from "../../util/char";
 
@@ -8,16 +12,21 @@ import { Char } from "../../util/char";
   selector: 'page-qr-code-generator',
   templateUrl: 'qr-code-generator.html'
 })
+/**
+ * QRCode generator page class
+ *
+ * @class      QrCodeGeneratorPage
+ */
 export class QrCodeGeneratorPage {
 
   /**
    * The generated AES.
    */
-  aes: AES;
+  private aes: AES;
   /**
    * The string generated from AES, to be sent.
    */
-  createdString: string = null;
+  private createdString: string = null;
   /**
    * AES IV as a "pseudo human readable" string
    */
@@ -27,7 +36,10 @@ export class QrCodeGeneratorPage {
    */
   private readableIV: string = null;
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController, 
+    private appState: SharedAppStateProvider,
+    ) {
     this.aes = new AES();
     this.readableKey = Char.numberArrayToCharCode(this.aes.getKey(), "")
     this.readableIV = Char.numberArrayToCharCode(this.aes.getIV(), "");
@@ -35,16 +47,17 @@ export class QrCodeGeneratorPage {
   }
 
   /**
-   * Return encoded AES Key & IV from `number[]` to string
+   * Return encoded courseID and AES (Key & IV) (from `number[]` to string) 
    *
    * @param      {<type>}  key     The AES key to encode
    * @param      {<type>}  iv      The AES IV to encode
    * @return     {<type>}  { The encoded string }
    */
   private encode(key: number[], iv: number[]):string {
-    let keyAsChar = Char.numberArrayToCharCode(key, "");
-    let ivAsChar = Char.numberArrayToCharCode(iv, "");
-    return new Array(keyAsChar, ivAsChar).join("¤");
+    let keyAsChar:string = Char.numberArrayToCharCode(key, "");
+    let ivAsChar:string = Char.numberArrayToCharCode(iv, "");
+    let courseID:string = this.appState.getCourse().getUID().toString();
+    return new Array(courseID, keyAsChar, ivAsChar).join("¤");
   }
 
   /**

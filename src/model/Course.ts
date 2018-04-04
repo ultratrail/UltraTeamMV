@@ -1,31 +1,54 @@
-import { } from '@types/googlemaps';
-import { Device } from '@ionic-native/device';
 import { User } from "./User";
-import { Geolocation } from '@ionic-native/geolocation';
 
-declare var google;
-
+/**
+ * Course describing class
+ *
+ * @class      Course
+ */
 export class Course {
 
-  nbUsers: number = 0;
+  /**
+   * List of course's users
+   */
   users: User[];
+
+  /**
+   * Creation date of list
+   */
   creationDate: Date;
-  geolocation: Geolocation;
-  startingPosition: google.maps.LatLng;
 
   constructor(
+    private UID: number,
   ) {
     this.creationDate = new Date();
     this.users = new Array<User>();
   }
 
+  /**
+   * Returns course's UID
+   *
+   * @return     {<type>}  Course's UID
+   */
+  public getUID():number{
+    return this.UID;
+  }
+
+  /**
+   * Returns course's user list
+   *
+   * @return     {<type>}  The users list.
+   */
   public getUsersList(): Array<User> {
     return this.users;
   }
 
-  public addUser(user: User) {
-    this.users[this.nbUsers] = user;
-    this.nbUsers++;
+  /**
+   * Adds an user to the course.
+   *
+   * @param      {<type>}  user    The User to be added to the course
+   */
+  public addUser(user: User):void{
+    this.users.push(user);
   }
 
 

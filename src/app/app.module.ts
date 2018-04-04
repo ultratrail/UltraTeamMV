@@ -15,6 +15,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { QrCodeGeneratorPage } from "../pages/qr-code-generator/qr-code-generator";
 import { QrCodeReaderPage } from '../pages/qr-code-reader/qr-code-reader'
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { SharedAppStateProvider } from '../providers/shared-app-state/shared-app-state';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { HomePage } from '../pages/home/home';
     SettingsPage,
     QrCodeGeneratorPage,
     QrCodeReaderPage,
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { HomePage } from '../pages/home/home';
     SettingsPage,
     QrCodeGeneratorPage,
     QrCodeReaderPage,
+    LoginPage,
   ],
   providers: [
     Geolocation,
@@ -47,6 +51,7 @@ import { HomePage } from '../pages/home/home';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     BarcodeScanner,
     Device,
+    SharedAppStateProvider,
   ]
 })
 export class AppModule {}

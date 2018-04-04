@@ -1,13 +1,13 @@
 # Project description #
 
-UltraTeamMV is a project developped by Enzo MOLION & Léo VALLETTE during [Polytech Grenoble](https://www.polytech-grenoble.fr/)'s [RICM4](https://www.polytech-grenoble.fr/menu-principal/formations/reseaux-informatiques-et-communication-multimedia/) courses.
+UltraTeamMV is a project developped by Enzo MOLION & Léo VALETTE during [Polytech Grenoble](https://www.polytech-grenoble.fr/)'s [RICM4](https://www.polytech-grenoble.fr/menu-principal/formations/reseaux-informatiques-et-communication-multimedia/) courses.
 
 This project (2017-18 version of [UltraTeam](https://air.imag.fr/index.php/UltraTeam)) consists of :
 
 - A BLE & LoRa decentralized protocol conception and implementation,
 - A web application development.
 This solution should allow a hikers team to localize each other in real time.
-It is developed in synergy with another [UltraTeam 2018 project](http://air.imag.fr/index.php/RICM4_2017_2018_-_UltraTeam_7.1/).
+It is developed in synergy with another [UltraTeam 2018 project](https://air.imag.fr/index.php/RICM4_2017_2018_-_UltraTeam_7.1).
 
 A more detailled description is available on the [AIR page](https://air.imag.fr/index.php/RICM4_2017_2018_-_UltraTeamMV) of the project.
 
@@ -51,3 +51,6 @@ sudo npm install
 
 ### Develop ESP32 software
 Todo
+
+### Known issues
+See issues on repository.

@@ -12,6 +12,8 @@ gulp.task("typedoc", function() {
       excludeExternals: true,
       exclude: "**/*+(.module|main|index).ts",
 
+			readme: "README.md",
+
 			// Output options (see typedoc docs)
 			out: "docs",
 

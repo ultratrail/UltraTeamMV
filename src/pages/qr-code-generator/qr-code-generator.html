@@ -1,10 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>QRCodeGenerator</ion-title>
+    <ion-title>Course creation</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -22,7 +19,6 @@
   </ion-card>
 
   <button *ngIf="createdString" ion-button block round (click)="openMapPage()">
-    <ion-icon name="checkmark"></ion-icon>
     Everybody joined
   </button>
 

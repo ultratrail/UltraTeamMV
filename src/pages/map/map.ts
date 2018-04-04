@@ -8,6 +8,11 @@ import L from "leaflet";
   selector: 'map-page',
   templateUrl: 'map.html'
 })
+/**
+ * Map page class.
+ *
+ * @class      MapPage (name)
+ */
 export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;
@@ -25,15 +30,13 @@ export class MapPage {
   constructor(
     private alerCtrl: AlertController
     ) {
-
+    
   }
 
   ionViewDidLoad() {
     //set map center
-    //this.center = [48.137154, 11.576124]; //Munich
-    this.center = [48.775556, 9.182778]; //Stuttgart
+    this.center = [45.184604, 5.752280]; //Polytech
     
-    //setup leaflet map
     this.initMap();
   }
 
@@ -98,7 +101,7 @@ export class MapPage {
     let currentMarker ; 
     let name: String;
     
-    currentPosition = user.getLocation();
+    currentPosition = user.getLatestCoord();
     currentMarker = L.marker(currentPosition).addTo(this.map);
     name = this.buildMarkerString(user);
     currentMarker.bindPopup(name).openPopup();
@@ -113,14 +116,18 @@ export class MapPage {
    * @return     {<type>}  The marker string created.
    */
   buildMarkerString(user:User):String{
-    return "<center><b>" + user.getName() + "</b></center><br>[" + user.getLocation()[0].toString() + ", " + user.getLocation()[1].toString() + "]";
+    let date = user.getLatestLocation().getDate();
+    return "<center><b>" + user.getName() + "</b><br>[" 
+    + user.getLatestCoord()[0].toString() + ", " + user.getLatestCoord()[1].toString() + "]<br>" 
+    + date.getHours().toString() + "h" + date.getMinutes().toString() + "<br>"
+    + date.getDate().toString() + "/" + date.getMonth().toString() + "/" + date.getFullYear().toString() + "</center>";
   }
 
 
   fakeUsersList: User[] = [
-  new User('Alice', [48.137154, 11.576124],true, true, true),
-  new User('Bob', [48.775556, 9.182778], undefined, undefined, undefined),
-  new User('Charlie', [-1, -1], undefined, undefined, undefined)
+  new User(0, 'Alice', 48.137154, 11.576124, new Date('May 9, 1996'), true, true),
+  new User(1, 'Bob', 48.775556, 9.182778, new Date('April 14, 1996'), undefined, undefined),
+  new User(2, 'Charlie', 45.4607541, 4.3901056, new Date(), undefined, undefined)
   ]
 
 }

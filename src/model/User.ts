@@ -1,37 +1,62 @@
-import { Geolocation } from '@ionic-native/geolocation';
 import { Device } from '@ionic-native/device';
+import { Location } from './Location'
+import { LocationList } from './LocationList'
 
+/**
+ * User describing class.
+ *
+ * @class      User
+ */
 export class User {
 
-  private UID: string;
-  private device: Device;
+  private locations: LocationList;
 
   constructor(
+    private UID: number,
     private name: string, 
-    private location : [number, number], 
-    private smartphoneON: boolean, 
+    lat: number,
+    lon: number,
+    date : Date, 
     private espON : boolean, 
     private sos: boolean) {
-    this.device = new Device();
-    this.UID = this.device.uuid;
+    // this.UID = new Device().uuid;
+    this.locations = new LocationList(new Location(lat, lon, date));
   }
   
   /**
+   * Gets the user's UID.
+   *
+   * @return     {<type>}  User's UID.
+   */
+  public getUID():number{
+    return this.UID;
+  }
+
+  /**
   * Gets the user's name.
   *
-  * @return     {<type>}  The user's name.
+  * @return     {<type>}  User's name.
   */
-  getName(){
+  public getName(){
     return this.name ;
   }
 
   /**
   * Gets the user's location.
   *
-  * @return     {<type>}  The user's location.
+  * @return     {<type>}  User's location.
   */
-  getLocation():Array<Number>{
-    return this.location ;
+  public getLatestLocation():Location{
+    return this.locations.getLatestLocation() ;
+  }
+
+  /**
+   * Returns the latest known cooridnates of the User.
+   *
+   * @return     {<type>}  The latest coordinates.
+   */
+  public getLatestCoord():[number, number]{
+    return this.locations.getLatestLocation().getCoord();
   }
 
   /**
