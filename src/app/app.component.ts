@@ -3,7 +3,6 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { SharedAppStateProvider } from '../providers/shared-app-state/shared-app-state'
 
-import { HomePage } from "../pages/home/home";
 import { MapPage } from "../pages/map/map";
 import { LoginPage } from "../pages/login/login";
 import { SettingsPage } from "../pages/settings/settings";
@@ -40,11 +39,9 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Home page', component: HomePage },
       { title: 'Map page', component: MapPage },
-      { title: 'QRCodeGenerator', component: QrCodeGeneratorPage },
-      { title: 'QRCodeReader', component: QrCodeReaderPage },
-      { title: 'Login', component: LoginPage },
+      { title: 'Show QR code', component: QrCodeGeneratorPage },
+      { title: 'Join course', component: QrCodeReaderPage },
       { title: 'Settings', component: SettingsPage },
     ];
   }
