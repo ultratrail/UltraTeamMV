@@ -74,22 +74,22 @@ export class QrCodeReaderPage {
   }
 
   /**
-   * Decodes an encoded courseID and AES (key & IV). 
+   * Decodes an encoded courseID and AES (key & IV).
    * Creates the corresponding AES into `aes`.
    * Sets the course in appState
    *
    * @param      {<type>}  str     The scanned string to be decoded
-   * @return     {<type>} 
+   * @return     {<type>}
    */
   private decode(str: string):void {
-    
+
     let arr:string[] = str.split("¤");
-    
+
     let courseID:number = parseInt(arr[0]);
-    
+
     let key = Char.charCodeToNumberArray(arr[1]);
     let IV = Char.charCodeToNumberArray(arr[2]);
-    
+
     this.aes = new AES(key, IV);
     this.readableKey = Char.numberArrayToCharCode(this.aes.getKey(), "")
     this.readableIV = Char.numberArrayToCharCode(this.aes.getIV(), "");
