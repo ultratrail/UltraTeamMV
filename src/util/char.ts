@@ -1,3 +1,4 @@
+
 /**
  * Character manipulation module.
  */
@@ -14,7 +15,7 @@ export module Char {
   }
 
   /**
-   * Returns the integer corresponding to the given char (first of the string) 
+   * Returns the integer corresponding to the given char (first of the string)
    *
    * @param      {<type>}  s       String to be translated
    * @return     {<type>}  { Corresponding integer }

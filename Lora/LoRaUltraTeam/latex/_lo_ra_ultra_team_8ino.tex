@@ -1,0 +1,449 @@
+\hypertarget{_lo_ra_ultra_team_8ino}{}\section{Lo\+Ra\+Ultra\+Team.\+ino File Reference}
+\label{_lo_ra_ultra_team_8ino}\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+
+
+Lo\+Ra communication program.  
+
+
+{\ttfamily \#include $<$S\+P\+I.\+h$>$}\\*
+{\ttfamily \#include $<$Lo\+Ra.\+h$>$}\\*
+{\ttfamily \#include $<$Wire.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}S\+S\+D1306.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_user}{User}
+\item 
+struct \hyperlink{struct_list}{List}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_a2dd443a4430713d325ab86895a4a45eb}{S\+CK}~5
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_a7334c540878c8c4d801fd75ed9fd8063}{M\+I\+SO}~19
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_a5d3f11f2fdf8a7e27b975291e0c2c8cc}{M\+O\+SI}~27
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_a88f7782e210e61586baf33b93240d905}{SS}~18
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_ac5d957e4fd3dc11cd97a54cf9ca057a4}{R\+ST}~14
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_a9a608303186d0078c7108fe3142e2b73}{D\+I0}~26
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_ab57e5c97e5d788f048284f1175c757b7}{B\+A\+ND}~868100000
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_a48bdb6a542f988a4ad3f5a3bf8061bd5}{P\+A\+B\+O\+O\+ST}~false
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_aa50fd7c0cc4943be023129874d201535}{T\+X\+P\+O\+W\+ER}~14
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_adeba2e4e28e81c3c7af87e3bb9906906}{S\+P\+R\+E\+A\+D\+I\+N\+G\+\_\+\+F\+A\+C\+T\+OR}~12
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_ab62aed7f2123c9c915242a259da9f4a8}{B\+A\+N\+D\+W\+I\+D\+TH}~125000
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_a58b50156f9d23b8c093225d94e6f9cdd}{C\+O\+D\+I\+N\+G\+\_\+\+R\+A\+TE}~5
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_a3e916db626fcc021393ce9c805132f90}{P\+R\+E\+A\+M\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH}~8
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_a3e9af6b370e370158949ba1f4d064a38}{S\+Y\+N\+C\+\_\+\+W\+O\+RD}~0x34
+\item 
+\#define \hyperlink{_lo_ra_ultra_team_8ino_ab39fec97d85960796efedec442f38004}{I\+N\+T\+E\+R\+V\+AL}~120000;
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_user}{User} \hyperlink{_lo_ra_ultra_team_8ino_aebb0f8a8bd00b8afba0e5abcf5b559c7}{User}
+\item 
+typedef struct \hyperlink{struct_list}{List} \hyperlink{_lo_ra_ultra_team_8ino_a61366e7da8638d66a464a4a6f4799199}{List}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_list}{List} $\ast$ \hyperlink{_lo_ra_ultra_team_8ino_aa2d915319a07c3510297074a55d04ea8}{initialisation} (uint8\+\_\+t my\+U\+ID, double my\+Lat\+Long, bool my\+S\+O\+S\+Flag, long mylast\+Updtate\+Time)
+\begin{DoxyCompactList}\small\item\em Initialize a list of users a user information. \end{DoxyCompactList}\item 
+void \hyperlink{_lo_ra_ultra_team_8ino_a438d0ba126f16b41137b8d63abd3500d}{insert\+User} (\hyperlink{struct_list}{List} $\ast$list, uint8\+\_\+t U\+ID, double Lat\+Long, bool S\+O\+S\+Flag)
+\begin{DoxyCompactList}\small\item\em Insert a new user at the end of a list of users. \end{DoxyCompactList}\item 
+\hyperlink{struct_user}{User} $\ast$ \hyperlink{_lo_ra_ultra_team_8ino_a1f547e5be0e0ff339a1bf2db33e23a4f}{find\+User} (\hyperlink{struct_list}{List} $\ast$list, uint8\+\_\+t user\+U\+ID)
+\begin{DoxyCompactList}\small\item\em Search a user via its U\+ID in a list of user. \end{DoxyCompactList}\item 
+\hyperlink{struct_list}{List} \hyperlink{_lo_ra_ultra_team_8ino_a27d82402e7eba33704c9a8d603af8094}{S\+O\+Scheck} (\hyperlink{struct_list}{List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Check if someone is sending a S\+OS. \end{DoxyCompactList}\item 
+\hyperlink{struct_list}{List} \hyperlink{_lo_ra_ultra_team_8ino_a011b19557d6ef2b70c305e7d5167d1cd}{concat\+List} (\hyperlink{struct_list}{List} $\ast$list1, \hyperlink{struct_list}{List} $\ast$list2)
+\begin{DoxyCompactList}\small\item\em Concatenate two lists. \end{DoxyCompactList}\item 
+void \hyperlink{_lo_ra_ultra_team_8ino_aa5f0d33b47a719329980682d96a56280}{config\+For\+Lo\+Ra\+W\+AN} ()
+\begin{DoxyCompactList}\small\item\em Set the configuration for Lo\+Ra communication. \end{DoxyCompactList}\item 
+void \hyperlink{_lo_ra_ultra_team_8ino_ac6846fd27e53576e96948324e6156f94}{update\+User\+Info} (\hyperlink{struct_list}{List} $\ast$list, uint8\+\_\+t user\+U\+ID, double user\+Lat\+Long, bool user\+S\+O\+S\+Flag)
+\begin{DoxyCompactList}\small\item\em Update the gelocation and / or the S\+OS statement of a user. \end{DoxyCompactList}\item 
+unsigned char $\ast$ \hyperlink{_lo_ra_ultra_team_8ino_a96409a025a960ed10eec19c4dc06ab08}{uint8\+\_\+t\+To\+Bytes} (uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em The following function convert the given value as an array of char. \end{DoxyCompactList}\item 
+unsigned char $\ast$ \hyperlink{_lo_ra_ultra_team_8ino_a734e45b1d49738b2b3ec078aa39679e3}{int\+To\+Bytes} (int value)
+\begin{DoxyCompactList}\small\item\em The following function convert the given value as an array of char. \end{DoxyCompactList}\item 
+unsigned char $\ast$ \hyperlink{_lo_ra_ultra_team_8ino_a3b9e4dd95b30c76a562202b4e0d83e97}{bool\+To\+Bytes} (bool value)
+\begin{DoxyCompactList}\small\item\em The following function convert the given value as an array of char. \end{DoxyCompactList}\item 
+unsigned char $\ast$ \hyperlink{_lo_ra_ultra_team_8ino_a65b01978e8befa16b9417ed30f4f1ffb}{double\+To\+Bytes} (double value)
+\begin{DoxyCompactList}\small\item\em The following function convert the given value as an array of char. \end{DoxyCompactList}\item 
+\hyperlink{struct_list}{List} \hyperlink{_lo_ra_ultra_team_8ino_a466998c561ceb177a255f7d298ef220b}{on\+Receive} (int packet\+Size)
+\begin{DoxyCompactList}\small\item\em This processus is triggered when a packet is received.\+It analyzes the packets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{_lo_ra_ultra_team_8ino_a2843f69080a5607b99b835cc25627445}{last\+Send\+Time} = 0
+\item 
+\hyperlink{struct_list}{List} $\ast$ \hyperlink{_lo_ra_ultra_team_8ino_a3edc125d8fee7f95b109b750e6c1c57f}{user\+List} = malloc(sizeof($\ast$user\+List))
+\item 
+uint8\+\_\+t \hyperlink{_lo_ra_ultra_team_8ino_a4bb53245e79372c82896ffb28c181088}{owner\+U\+ID} = 1234
+\item 
+double \hyperlink{_lo_ra_ultra_team_8ino_a861d077f57e068df237e05627f16b2f7}{owner\+Lat\+Long}
+\item 
+bool \hyperlink{_lo_ra_ultra_team_8ino_a996122757c1d503a2ad0354b4244a3f5}{owner\+S\+O\+S\+Flag} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Lo\+Ra communication program. 
+
+\begin{DoxyAuthor}{Author}
+Léo Valette 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1
+\end{DoxyVersion}
+This program is for the Lo\+Ra communication 
+
+\subsection{Macro Definition Documentation}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!B\+A\+ND@{B\+A\+ND}}
+\index{B\+A\+ND@{B\+A\+ND}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{B\+A\+ND}{BAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+ND~868100000}\hypertarget{_lo_ra_ultra_team_8ino_ab57e5c97e5d788f048284f1175c757b7}{}\label{_lo_ra_ultra_team_8ino_ab57e5c97e5d788f048284f1175c757b7}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!B\+A\+N\+D\+W\+I\+D\+TH@{B\+A\+N\+D\+W\+I\+D\+TH}}
+\index{B\+A\+N\+D\+W\+I\+D\+TH@{B\+A\+N\+D\+W\+I\+D\+TH}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{B\+A\+N\+D\+W\+I\+D\+TH}{BANDWIDTH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+N\+D\+W\+I\+D\+TH~125000}\hypertarget{_lo_ra_ultra_team_8ino_ab62aed7f2123c9c915242a259da9f4a8}{}\label{_lo_ra_ultra_team_8ino_ab62aed7f2123c9c915242a259da9f4a8}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!C\+O\+D\+I\+N\+G\+\_\+\+R\+A\+TE@{C\+O\+D\+I\+N\+G\+\_\+\+R\+A\+TE}}
+\index{C\+O\+D\+I\+N\+G\+\_\+\+R\+A\+TE@{C\+O\+D\+I\+N\+G\+\_\+\+R\+A\+TE}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{C\+O\+D\+I\+N\+G\+\_\+\+R\+A\+TE}{CODING_RATE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+D\+I\+N\+G\+\_\+\+R\+A\+TE~5}\hypertarget{_lo_ra_ultra_team_8ino_a58b50156f9d23b8c093225d94e6f9cdd}{}\label{_lo_ra_ultra_team_8ino_a58b50156f9d23b8c093225d94e6f9cdd}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!D\+I0@{D\+I0}}
+\index{D\+I0@{D\+I0}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{D\+I0}{DI0}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+I0~26}\hypertarget{_lo_ra_ultra_team_8ino_a9a608303186d0078c7108fe3142e2b73}{}\label{_lo_ra_ultra_team_8ino_a9a608303186d0078c7108fe3142e2b73}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!I\+N\+T\+E\+R\+V\+AL@{I\+N\+T\+E\+R\+V\+AL}}
+\index{I\+N\+T\+E\+R\+V\+AL@{I\+N\+T\+E\+R\+V\+AL}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{I\+N\+T\+E\+R\+V\+AL}{INTERVAL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+T\+E\+R\+V\+AL~120000;}\hypertarget{_lo_ra_ultra_team_8ino_ab39fec97d85960796efedec442f38004}{}\label{_lo_ra_ultra_team_8ino_ab39fec97d85960796efedec442f38004}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!M\+I\+SO@{M\+I\+SO}}
+\index{M\+I\+SO@{M\+I\+SO}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{M\+I\+SO}{MISO}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+I\+SO~19}\hypertarget{_lo_ra_ultra_team_8ino_a7334c540878c8c4d801fd75ed9fd8063}{}\label{_lo_ra_ultra_team_8ino_a7334c540878c8c4d801fd75ed9fd8063}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!M\+O\+SI@{M\+O\+SI}}
+\index{M\+O\+SI@{M\+O\+SI}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{M\+O\+SI}{MOSI}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+O\+SI~27}\hypertarget{_lo_ra_ultra_team_8ino_a5d3f11f2fdf8a7e27b975291e0c2c8cc}{}\label{_lo_ra_ultra_team_8ino_a5d3f11f2fdf8a7e27b975291e0c2c8cc}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!P\+A\+B\+O\+O\+ST@{P\+A\+B\+O\+O\+ST}}
+\index{P\+A\+B\+O\+O\+ST@{P\+A\+B\+O\+O\+ST}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{P\+A\+B\+O\+O\+ST}{PABOOST}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+B\+O\+O\+ST~false}\hypertarget{_lo_ra_ultra_team_8ino_a48bdb6a542f988a4ad3f5a3bf8061bd5}{}\label{_lo_ra_ultra_team_8ino_a48bdb6a542f988a4ad3f5a3bf8061bd5}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!P\+R\+E\+A\+M\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH@{P\+R\+E\+A\+M\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH}}
+\index{P\+R\+E\+A\+M\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH@{P\+R\+E\+A\+M\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{P\+R\+E\+A\+M\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH}{PREAMBLE_LENGTH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+E\+A\+M\+B\+L\+E\+\_\+\+L\+E\+N\+G\+TH~8}\hypertarget{_lo_ra_ultra_team_8ino_a3e916db626fcc021393ce9c805132f90}{}\label{_lo_ra_ultra_team_8ino_a3e916db626fcc021393ce9c805132f90}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!R\+ST@{R\+ST}}
+\index{R\+ST@{R\+ST}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{R\+ST}{RST}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+ST~14}\hypertarget{_lo_ra_ultra_team_8ino_ac5d957e4fd3dc11cd97a54cf9ca057a4}{}\label{_lo_ra_ultra_team_8ino_ac5d957e4fd3dc11cd97a54cf9ca057a4}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!S\+CK@{S\+CK}}
+\index{S\+CK@{S\+CK}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{S\+CK}{SCK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+CK~5}\hypertarget{_lo_ra_ultra_team_8ino_a2dd443a4430713d325ab86895a4a45eb}{}\label{_lo_ra_ultra_team_8ino_a2dd443a4430713d325ab86895a4a45eb}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!S\+P\+R\+E\+A\+D\+I\+N\+G\+\_\+\+F\+A\+C\+T\+OR@{S\+P\+R\+E\+A\+D\+I\+N\+G\+\_\+\+F\+A\+C\+T\+OR}}
+\index{S\+P\+R\+E\+A\+D\+I\+N\+G\+\_\+\+F\+A\+C\+T\+OR@{S\+P\+R\+E\+A\+D\+I\+N\+G\+\_\+\+F\+A\+C\+T\+OR}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{S\+P\+R\+E\+A\+D\+I\+N\+G\+\_\+\+F\+A\+C\+T\+OR}{SPREADING_FACTOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+R\+E\+A\+D\+I\+N\+G\+\_\+\+F\+A\+C\+T\+OR~12}\hypertarget{_lo_ra_ultra_team_8ino_adeba2e4e28e81c3c7af87e3bb9906906}{}\label{_lo_ra_ultra_team_8ino_adeba2e4e28e81c3c7af87e3bb9906906}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!SS@{SS}}
+\index{SS@{SS}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{SS}{SS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define SS~18}\hypertarget{_lo_ra_ultra_team_8ino_a88f7782e210e61586baf33b93240d905}{}\label{_lo_ra_ultra_team_8ino_a88f7782e210e61586baf33b93240d905}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!S\+Y\+N\+C\+\_\+\+W\+O\+RD@{S\+Y\+N\+C\+\_\+\+W\+O\+RD}}
+\index{S\+Y\+N\+C\+\_\+\+W\+O\+RD@{S\+Y\+N\+C\+\_\+\+W\+O\+RD}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{S\+Y\+N\+C\+\_\+\+W\+O\+RD}{SYNC_WORD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+Y\+N\+C\+\_\+\+W\+O\+RD~0x34}\hypertarget{_lo_ra_ultra_team_8ino_a3e9af6b370e370158949ba1f4d064a38}{}\label{_lo_ra_ultra_team_8ino_a3e9af6b370e370158949ba1f4d064a38}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!T\+X\+P\+O\+W\+ER@{T\+X\+P\+O\+W\+ER}}
+\index{T\+X\+P\+O\+W\+ER@{T\+X\+P\+O\+W\+ER}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{T\+X\+P\+O\+W\+ER}{TXPOWER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+X\+P\+O\+W\+ER~14}\hypertarget{_lo_ra_ultra_team_8ino_aa50fd7c0cc4943be023129874d201535}{}\label{_lo_ra_ultra_team_8ino_aa50fd7c0cc4943be023129874d201535}
+
+
+\subsection{Typedef Documentation}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!List@{List}}
+\index{List@{List}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{List}{List}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf List} {\bf List}}\hypertarget{_lo_ra_ultra_team_8ino_a61366e7da8638d66a464a4a6f4799199}{}\label{_lo_ra_ultra_team_8ino_a61366e7da8638d66a464a4a6f4799199}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!User@{User}}
+\index{User@{User}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{User}{User}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf User} {\bf User}}\hypertarget{_lo_ra_ultra_team_8ino_aebb0f8a8bd00b8afba0e5abcf5b559c7}{}\label{_lo_ra_ultra_team_8ino_aebb0f8a8bd00b8afba0e5abcf5b559c7}
+
+
+\subsection{Function Documentation}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!bool\+To\+Bytes@{bool\+To\+Bytes}}
+\index{bool\+To\+Bytes@{bool\+To\+Bytes}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{bool\+To\+Bytes(bool value)}{boolToBytes(bool value)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char$\ast$ bool\+To\+Bytes (
+\begin{DoxyParamCaption}
+\item[{bool}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_a3b9e4dd95b30c76a562202b4e0d83e97}{}\label{_lo_ra_ultra_team_8ino_a3b9e4dd95b30c76a562202b4e0d83e97}
+
+
+The following function convert the given value as an array of char. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to convert\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted value as an array of char 
+\end{DoxyReturn}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!concat\+List@{concat\+List}}
+\index{concat\+List@{concat\+List}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{concat\+List(\+List $\ast$list1, List $\ast$list2)}{concatList(List *list1, List *list2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf List} concat\+List (
+\begin{DoxyParamCaption}
+\item[{{\bf List} $\ast$}]{list1, }
+\item[{{\bf List} $\ast$}]{list2}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_a011b19557d6ef2b70c305e7d5167d1cd}{}\label{_lo_ra_ultra_team_8ino_a011b19557d6ef2b70c305e7d5167d1cd}
+
+
+Concatenate two lists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list1} & Initial list \\
+\hline
+{\em list2} & \hyperlink{struct_list}{List} that should be concatenate to the first list\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{ description\+\_\+of\+\_\+the\+\_\+return\+\_\+value \} 
+\end{DoxyReturn}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!config\+For\+Lo\+Ra\+W\+AN@{config\+For\+Lo\+Ra\+W\+AN}}
+\index{config\+For\+Lo\+Ra\+W\+AN@{config\+For\+Lo\+Ra\+W\+AN}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{config\+For\+Lo\+Ra\+W\+A\+N()}{configForLoRaWAN()}}]{\setlength{\rightskip}{0pt plus 5cm}void config\+For\+Lo\+Ra\+W\+AN (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_aa5f0d33b47a719329980682d96a56280}{}\label{_lo_ra_ultra_team_8ino_aa5f0d33b47a719329980682d96a56280}
+
+
+Set the configuration for Lo\+Ra communication. 
+
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!double\+To\+Bytes@{double\+To\+Bytes}}
+\index{double\+To\+Bytes@{double\+To\+Bytes}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{double\+To\+Bytes(double value)}{doubleToBytes(double value)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char$\ast$ double\+To\+Bytes (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_a65b01978e8befa16b9417ed30f4f1ffb}{}\label{_lo_ra_ultra_team_8ino_a65b01978e8befa16b9417ed30f4f1ffb}
+
+
+The following function convert the given value as an array of char. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to convert\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted value as an array of char 
+\end{DoxyReturn}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!find\+User@{find\+User}}
+\index{find\+User@{find\+User}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{find\+User(\+List $\ast$list, uint8\+\_\+t user\+U\+I\+D)}{findUser(List *list, uint8_t userUID)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf User}$\ast$ find\+User (
+\begin{DoxyParamCaption}
+\item[{{\bf List} $\ast$}]{list, }
+\item[{uint8\+\_\+t}]{user\+U\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_a1f547e5be0e0ff339a1bf2db33e23a4f}{}\label{_lo_ra_ultra_team_8ino_a1f547e5be0e0ff339a1bf2db33e23a4f}
+
+
+Search a user via its U\+ID in a list of user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & the list of user where the user is searched \\
+\hline
+{\em user\+U\+ID} & the user U\+ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the user or N\+U\+LL if the user has not been found 
+\end{DoxyReturn}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!initialisation@{initialisation}}
+\index{initialisation@{initialisation}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{initialisation(uint8\+\_\+t my\+U\+I\+D, double my\+Lat\+Long, bool my\+S\+O\+S\+Flag, long mylast\+Updtate\+Time)}{initialisation(uint8_t myUID, double myLatLong, bool mySOSFlag, long mylastUpdtateTime)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf List}$\ast$ initialisation (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{my\+U\+ID, }
+\item[{double}]{my\+Lat\+Long, }
+\item[{bool}]{my\+S\+O\+S\+Flag, }
+\item[{long}]{mylast\+Updtate\+Time}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_aa2d915319a07c3510297074a55d04ea8}{}\label{_lo_ra_ultra_team_8ino_aa2d915319a07c3510297074a55d04ea8}
+
+
+Initialize a list of users a user information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+U\+ID} & U\+ID of the user \\
+\hline
+{\em my\+Lat\+Long} & geolocation of the user \\
+\hline
+{\em my\+S\+O\+S\+Flag} & S\+OS statement of the user \\
+\hline
+{\em mylast\+Updtate\+Time} & The mylast updtate time\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the initialized list 
+\end{DoxyReturn}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!insert\+User@{insert\+User}}
+\index{insert\+User@{insert\+User}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{insert\+User(\+List $\ast$list, uint8\+\_\+t U\+I\+D, double Lat\+Long, bool S\+O\+S\+Flag)}{insertUser(List *list, uint8_t UID, double LatLong, bool SOSFlag)}}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+User (
+\begin{DoxyParamCaption}
+\item[{{\bf List} $\ast$}]{list, }
+\item[{uint8\+\_\+t}]{U\+ID, }
+\item[{double}]{Lat\+Long, }
+\item[{bool}]{S\+O\+S\+Flag}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_a438d0ba126f16b41137b8d63abd3500d}{}\label{_lo_ra_ultra_team_8ino_a438d0ba126f16b41137b8d63abd3500d}
+
+
+Insert a new user at the end of a list of users. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & the list of user where the user should be added \\
+\hline
+{\em U\+ID} & the user U\+ID \\
+\hline
+{\em Lat\+Long} & the user geolocalisation \\
+\hline
+{\em S\+O\+S\+Flag} & the user S\+OS statement \\
+\hline
+\end{DoxyParams}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!int\+To\+Bytes@{int\+To\+Bytes}}
+\index{int\+To\+Bytes@{int\+To\+Bytes}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{int\+To\+Bytes(int value)}{intToBytes(int value)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char$\ast$ int\+To\+Bytes (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_a734e45b1d49738b2b3ec078aa39679e3}{}\label{_lo_ra_ultra_team_8ino_a734e45b1d49738b2b3ec078aa39679e3}
+
+
+The following function convert the given value as an array of char. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to convert\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted value as an array of char 
+\end{DoxyReturn}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!on\+Receive@{on\+Receive}}
+\index{on\+Receive@{on\+Receive}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{on\+Receive(int packet\+Size)}{onReceive(int packetSize)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf List} on\+Receive (
+\begin{DoxyParamCaption}
+\item[{int}]{packet\+Size}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_a466998c561ceb177a255f7d298ef220b}{}\label{_lo_ra_ultra_team_8ino_a466998c561ceb177a255f7d298ef220b}
+
+
+This processus is triggered when a packet is received.\+It analyzes the packets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet\+Size} & The size of the packet that has been received. Usually Lo\+Ra.\+parse\+Packet();\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The list of changes noticed 
+\end{DoxyReturn}
+Method called during the setup. Send information about the embedded card owner
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & the embedded card owner\\
+\hline
+\end{DoxyParams}
+Create and send a message
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+To\+Send} & \hyperlink{struct_list}{List} of user that should have their information sent\\
+\hline
+\end{DoxyParams}
+H\+E\+RE Y\+OU S\+H\+O\+U\+LD -\/\+A\+DD T\+HE B\+LE S\+E\+T\+UP -\/\+S\+ET D\+A\+TA A\+B\+O\+UT T\+HE O\+W\+N\+ER OF T\+HE E\+M\+B\+E\+D\+D\+ED C\+A\+RD O\+B\+T\+A\+I\+N\+ED V\+IA B\+LE\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!S\+O\+Scheck@{S\+O\+Scheck}}
+\index{S\+O\+Scheck@{S\+O\+Scheck}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{S\+O\+Scheck(\+List $\ast$list)}{SOScheck(List *list)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf List} S\+O\+Scheck (
+\begin{DoxyParamCaption}
+\item[{{\bf List} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_a27d82402e7eba33704c9a8d603af8094}{}\label{_lo_ra_ultra_team_8ino_a27d82402e7eba33704c9a8d603af8094}
+
+
+Check if someone is sending a S\+OS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \hyperlink{struct_list}{List} of users that are connected\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{struct_list}{List} of users that are or sending a S\+OS 
+\end{DoxyReturn}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!uint8\+\_\+t\+To\+Bytes@{uint8\+\_\+t\+To\+Bytes}}
+\index{uint8\+\_\+t\+To\+Bytes@{uint8\+\_\+t\+To\+Bytes}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{uint8\+\_\+t\+To\+Bytes(uint8\+\_\+t value)}{uint8_tToBytes(uint8_t value)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char$\ast$ uint8\+\_\+t\+To\+Bytes (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_a96409a025a960ed10eec19c4dc06ab08}{}\label{_lo_ra_ultra_team_8ino_a96409a025a960ed10eec19c4dc06ab08}
+
+
+The following function convert the given value as an array of char. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to convert\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted value as an array of char 
+\end{DoxyReturn}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!update\+User\+Info@{update\+User\+Info}}
+\index{update\+User\+Info@{update\+User\+Info}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{update\+User\+Info(\+List $\ast$list, uint8\+\_\+t user\+U\+I\+D, double user\+Lat\+Long, bool user\+S\+O\+S\+Flag)}{updateUserInfo(List *list, uint8_t userUID, double userLatLong, bool userSOSFlag)}}]{\setlength{\rightskip}{0pt plus 5cm}void update\+User\+Info (
+\begin{DoxyParamCaption}
+\item[{{\bf List} $\ast$}]{list, }
+\item[{uint8\+\_\+t}]{user\+U\+ID, }
+\item[{double}]{user\+Lat\+Long, }
+\item[{bool}]{user\+S\+O\+S\+Flag}
+\end{DoxyParamCaption}
+)}\hypertarget{_lo_ra_ultra_team_8ino_ac6846fd27e53576e96948324e6156f94}{}\label{_lo_ra_ultra_team_8ino_ac6846fd27e53576e96948324e6156f94}
+
+
+Update the gelocation and / or the S\+OS statement of a user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & the list of user where the user should be added \\
+\hline
+{\em user\+U\+ID} & the user U\+ID \\
+\hline
+{\em user\+Lat\+Long} & the user geolocalisation \\
+\hline
+{\em user\+S\+O\+S\+Flag} & The sos flag \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!last\+Send\+Time@{last\+Send\+Time}}
+\index{last\+Send\+Time@{last\+Send\+Time}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{last\+Send\+Time}{lastSendTime}}]{\setlength{\rightskip}{0pt plus 5cm}long last\+Send\+Time = 0}\hypertarget{_lo_ra_ultra_team_8ino_a2843f69080a5607b99b835cc25627445}{}\label{_lo_ra_ultra_team_8ino_a2843f69080a5607b99b835cc25627445}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!owner\+Lat\+Long@{owner\+Lat\+Long}}
+\index{owner\+Lat\+Long@{owner\+Lat\+Long}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{owner\+Lat\+Long}{ownerLatLong}}]{\setlength{\rightskip}{0pt plus 5cm}double owner\+Lat\+Long}\hypertarget{_lo_ra_ultra_team_8ino_a861d077f57e068df237e05627f16b2f7}{}\label{_lo_ra_ultra_team_8ino_a861d077f57e068df237e05627f16b2f7}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!owner\+S\+O\+S\+Flag@{owner\+S\+O\+S\+Flag}}
+\index{owner\+S\+O\+S\+Flag@{owner\+S\+O\+S\+Flag}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{owner\+S\+O\+S\+Flag}{ownerSOSFlag}}]{\setlength{\rightskip}{0pt plus 5cm}bool owner\+S\+O\+S\+Flag = false}\hypertarget{_lo_ra_ultra_team_8ino_a996122757c1d503a2ad0354b4244a3f5}{}\label{_lo_ra_ultra_team_8ino_a996122757c1d503a2ad0354b4244a3f5}
+\index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!owner\+U\+ID@{owner\+U\+ID}}
+\index{owner\+U\+ID@{owner\+U\+ID}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{owner\+U\+ID}{ownerUID}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t owner\+U\+ID = 1234}\hypertarget{_lo_ra_ultra_team_8ino_a4bb53245e79372c82896ffb28c181088}{}\label{_lo_ra_ultra_team_8ino_a4bb53245e79372c82896ffb28c181088}
+Values that should be obtained via B\+LE \index{Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}!user\+List@{user\+List}}
+\index{user\+List@{user\+List}!Lo\+Ra\+Ultra\+Team.\+ino@{Lo\+Ra\+Ultra\+Team.\+ino}}
+\subsubsection[{\texorpdfstring{user\+List}{userList}}]{\setlength{\rightskip}{0pt plus 5cm}user\+List = malloc(sizeof($\ast$user\+List))}\hypertarget{_lo_ra_ultra_team_8ino_a3edc125d8fee7f95b109b750e6c1c57f}{}\label{_lo_ra_ultra_team_8ino_a3edc125d8fee7f95b109b750e6c1c57f}

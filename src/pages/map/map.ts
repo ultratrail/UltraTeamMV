@@ -23,20 +23,20 @@ export class MapPage {
   private map: L.Map;
 
   /**
-   * Leaflet map center 
+   * Leaflet map center
    */
   center: L.PointTuple;
 
   constructor(
     private alerCtrl: AlertController
     ) {
-    
+
   }
 
   ionViewDidLoad() {
     //set map center
     this.center = [45.184604, 5.752280]; //Polytech
-    
+
     this.initMap();
   }
 
@@ -68,7 +68,7 @@ export class MapPage {
 
   /**
   * Pops an alert radio list to select which user to focus on.
-  * On click on user, it will center map on said user. 
+  * On click on user, it will center map on said user.
   */
   displayUserListRadio(): void {
     let alert = this.alerCtrl.create();
@@ -92,15 +92,15 @@ export class MapPage {
   }
 
   /**
-   * Sets given user's location as center of the map 
+   * Sets given user's location as center of the map
    *
    * @param      {<type>}  user    The user to center on
    */
   centerOnUser(user:User):void {
     let currentPosition = new Array<Number>(2);
-    let currentMarker ; 
+    let currentMarker ;
     let name: String;
-    
+
     currentPosition = user.getLatestCoord();
     currentMarker = L.marker(currentPosition).addTo(this.map);
     name = this.buildMarkerString(user);
@@ -117,8 +117,8 @@ export class MapPage {
    */
   buildMarkerString(user:User):String{
     let date = user.getLatestLocation().getDate();
-    return "<center><b>" + user.getName() + "</b><br>[" 
-    + user.getLatestCoord()[0].toString() + ", " + user.getLatestCoord()[1].toString() + "]<br>" 
+    return "<center><b>" + user.getName() + "</b><br>["
+    + user.getLatestCoord()[0].toString() + ", " + user.getLatestCoord()[1].toString() + "]<br>"
     + date.getHours().toString() + "h" + date.getMinutes().toString() + "<br>"
     + date.getDate().toString() + "/" + date.getMonth().toString() + "/" + date.getFullYear().toString() + "</center>";
   }

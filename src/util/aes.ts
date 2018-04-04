@@ -49,7 +49,7 @@ export class AES {
   }
 
   /**
-   * Returns a number array of length 16 of random number from 0 to 16. 
+   * Returns a number array of length 16 of random number from 0 to 16.
    *
    * @return     {<type>}  { The resulting array }
    */
@@ -62,7 +62,7 @@ export class AES {
   }
 
   /**
-   * Encrypts given string with AES Key & IV. 
+   * Encrypts given string with AES Key & IV.
    *
    * @param      {<type>}  str     The string
    * @return     {<type>}  { The encrypted data }

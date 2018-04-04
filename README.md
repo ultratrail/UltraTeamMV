@@ -22,14 +22,14 @@ A more detailled description is available on the [AIR page](https://air.imag.fr/
 ### Apple
 Todo
 
-### Windows phone 
+### Windows phone
 Todo
 
-## Developper 
+## Developper
 ### Develop Ionic app
 You'll need to : install required commands (```git``` & ```npm```), clone repository, install required npm packages.  
 You do so by copy and pasting the following terminal commands if you're running a debian based linux distribution :
- 
+
 Install nmp via [nodejs](https://nodejs.org/en/download/) :  
 ```  
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -  
