@@ -6,6 +6,7 @@ This project (2017-18 version of [UltraTeam](https://air.imag.fr/index.php/Ultra
 
 - A BLE & LoRa decentralized protocol conception and implementation,
 - A web application development.
+
 This solution should allow a hikers team to localize each other in real time.
 It is developed in synergy with another [UltraTeam 2018 project](https://air.imag.fr/index.php/RICM4_2017_2018_-_UltraTeam_7.1).
 
@@ -27,8 +28,8 @@ Todo
 
 ## Developper 
 ### Develop Ionic app
-You'll need to : install required commands (```git``` & ```npm```), clone repository, install required npm packages.  
-You do so by copy and pasting the following terminal commands if you're running a debian based linux distribution :
+You'll need to : install required commands (```git``` & ```npm```), clone repository and install required npm packages.  
+You can do so by copy and pasting the following terminal commands if you're running a debian based linux distribution :
  
 Install nmp via [nodejs](https://nodejs.org/en/download/) :  
 ```  
@@ -49,6 +50,11 @@ Install required npm packages :
 sudo npm install
 ```  
 
+You can now run the following command to emulate the application  
+```
+ionic -serve -c -lab
+```
+To help you understand this project, a documentation is provided. See `docs/index.html`.
 ### Develop ESP32 software
 Todo
 
