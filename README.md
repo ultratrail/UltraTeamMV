@@ -41,7 +41,7 @@ sudo apt install git
 ```  
 Clone repository :  
 ```  
-git clone https://gricad-gitlab.univ-grenoble-alpes.fr/Projet-RICM4/17-18/7.2/UltraTeamMVApp.git UltraTeamMVApp  
+git clone https://github.com/ultratrail/UltraTeamMV.git UltraTeamMVApp  
 cd UltraTeamMVApp  
 ```  
 Install required npm packages :  
