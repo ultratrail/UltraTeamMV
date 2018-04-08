@@ -22,7 +22,7 @@ export class HomePage {
   createCourse():void{
     let courseID:number = API.createCourse(this.appState.getUser().getUID());
     let createdCourse:Course = new Course(courseID);
-    this.appState.setCourse(createdCourse); 
+    this.appState.setCourse(createdCourse);
     this.openCreatePage();
   }
 

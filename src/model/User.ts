@@ -13,16 +13,16 @@ export class User {
 
   constructor(
     private UID: number,
-    private name: string, 
+    private name: string,
     lat: number,
     lon: number,
-    date : Date, 
-    private espON : boolean, 
+    date : Date,
+    private espON : boolean,
     private sos: boolean) {
     // this.UID = new Device().uuid;
     this.locations = new LocationList(new Location(lat, lon, date));
   }
-  
+
   /**
    * Gets the user's UID.
    *

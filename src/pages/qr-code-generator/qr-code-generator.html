@@ -13,9 +13,7 @@
     <ngx-qrcode [qrc-value]="createdString" qrc-errorCorrectionLevel = "L"></ngx-qrcode>
     <ion-card-content>
       <p>Key : {{ readableKey }}</p>
-      <p>IV : {{ readableIV }} </p>
-      <p>CreatedString: {{ createdString }}</p>
-    </ion-card-content>
+      <p>IV : {{ readableIV }} </p>    </ion-card-content>
   </ion-card>
 
   <button *ngIf="createdString" ion-button block round (click)="openMapPage()">
