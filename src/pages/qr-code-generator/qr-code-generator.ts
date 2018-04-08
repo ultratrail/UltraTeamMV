@@ -37,7 +37,7 @@ export class QrCodeGeneratorPage {
   private readableIV: string = null;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     private appState: SharedAppStateProvider,
     ) {
     this.aes = new AES();
@@ -47,7 +47,7 @@ export class QrCodeGeneratorPage {
   }
 
   /**
-   * Return encoded courseID and AES (Key & IV) (from `number[]` to string) 
+   * Return encoded courseID and AES (Key & IV) (from `number[]` to string)
    *
    * @param      {<type>}  key     The AES key to encode
    * @param      {<type>}  iv      The AES IV to encode
