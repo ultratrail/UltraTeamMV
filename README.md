@@ -55,8 +55,55 @@ You can now run the following command to emulate the application
 ionic -serve -c -lab
 ```
 To help you understand this project, a documentation is provided. See `docs/index.html`.
-### Develop ESP32 software
-Todo
+### Install ESP-IDF software for BLE
+First, you need to install this :
+```
+sudo apt-get install git wget make libncurses-dev flex bison gperf python python-serial
+```
+
+Then download the files needed [here](https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz)
+
+Extract the files in a new folder "esp"
+```
+mkdir -p ~/esp
+cd ~/esp
+tar -xzf ~/Downloads/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz
+```
+
+Then clone the git repository :
+```
+cd ~/esp
+git clone --recursive https://github.com/espressif/esp-idf.git
+```
+
+#### Start a project :
+We will take the project ```hello_world``` as an example for the following commands
+```
+cd ~/esp
+cp -r esp/examples/get-started/hello_world
+```
+
+Project configuration :
+```
+cd ~/esp/hello_world
+make menuconfig
+```
+
+To flash your ESP32 card :
+```
+make flash
+```
+
+If you want to see the execution in your monitor do :
+```
+make monitor
+```
+
+To do both at teh same time you can also do
+```
+make flash monitor
+```
+
 
 ### Known issues
 See issues on repository.
