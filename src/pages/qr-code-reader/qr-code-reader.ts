@@ -94,7 +94,7 @@ export class QrCodeReaderPage {
     this.readableKey = Char.numberArrayToCharCode(this.aes.getKey(), "")
     this.readableIV = Char.numberArrayToCharCode(this.aes.getIV(), "");
 
-    API.joinCourse(this.appState.getCourse().getUID(), this.appState.getUser().getUID());
+    API.joinCourse(courseID, this.appState.getUser().getUID());
   }
 
 }
